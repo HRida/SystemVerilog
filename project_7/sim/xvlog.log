@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_7/src/ParallelCounter.sv" into library work
+INFO: [VRFC 10-311] analyzing module ParallelCounter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_7/src/ParallelCounter_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module ParallelCounter_tb

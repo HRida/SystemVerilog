@@ -1,0 +1,1 @@
+-debug "typical" -top "counter_tb" -snapshot "counter_tb_snapshot" 

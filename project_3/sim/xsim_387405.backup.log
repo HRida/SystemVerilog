@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Nov 17 10:32:05 2023
+# Process ID: 387405
+# Current directory: /shares/zitipoolhome/ub305/examples/exercise4/sim
+# Command line: xsim -mode tcl -source {xsim.dir/counter_tb_snapshot/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/examples/exercise4/sim/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/examples/exercise4/sim/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1212.868 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source xsim.dir/counter_tb_snapshot/xsim_script.tcl
+# xsim {counter_tb_snapshot} -autoloadwcfg -tclbatch {Makefile_cfg_xsim.tcl}
+Time resolution is 1 ps
+source Makefile_cfg_xsim.tcl
+## log_wave -recursive *
+## run all
+$finish called at time : 50 ns : File "/shares/zitipoolhome/ub305/examples/exercise4/src/coutner_tb.sv" Line 18
+## exit
+INFO: [Common 17-206] Exiting xsim at Fri Nov 17 10:32:18 2023...

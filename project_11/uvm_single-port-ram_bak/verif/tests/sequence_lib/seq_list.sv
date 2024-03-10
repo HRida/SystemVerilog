@@ -1,0 +1,21 @@
+`ifndef SEQ_LIST
+`define SEQ_LIST
+
+package seq_list;
+
+ import uvm_pkg::*;
+ `include "uvm_macros.svh"
+
+ import agent_pkg::*;
+ import env_pkg::*;
+
+ //////////////////////////////////////////////////////////////////////////////
+ // including test list
+ //////////////////////////////////////////////////////////////////////////////
+
+ `include "generator.sv"
+
+endpackage
+
+`endif
+

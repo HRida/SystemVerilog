@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_3/src/counter.sv" into library work
+INFO: [VRFC 10-311] analyzing module counter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_3/src/coutner_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module counter_tb

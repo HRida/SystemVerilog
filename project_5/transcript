@@ -1,0 +1,371 @@
+# Reading pref.tcl
+# //  Questa Sim-64
+# //  Version 2020.1 win64 Jan 28 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:17:02 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:17:02 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:17:02 on Nov 12,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.slib(fast)
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:46:00 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:46:00 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 22:46:02 on Nov 12,2023, Elapsed time: 0:29:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:46:02 on Nov 12,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: slib.sv(17): Module 'ALU' is not defined.
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 22:46:03 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# No Design Loaded!
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:46:19 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package Types
+# -- Compiling module ALU
+# ** Error: (vlog-13069) ALU.sv(20): near "Sel": syntax error, unexpected IDENTIFIER, expecting ')'.
+# End time: 22:46:19 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:47:05 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:47:06 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:47:06 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:47:06 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:47:06 on Nov 12,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): slib.sv(18): (vopt-7063) Failed to find 'Result' in hierarchical name 'Result'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(18): (vopt-7063) Failed to find 'Result' in hierarchical name 'Result.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(19): (vopt-7063) Failed to find 'Equal' in hierarchical name 'Equal'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(19): (vopt-7063) Failed to find 'Equal' in hierarchical name 'Equal.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(20): (vopt-7063) Failed to find 'Op1' in hierarchical name 'Op1'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(20): (vopt-7063) Failed to find 'Op1' in hierarchical name 'Op1.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(21): (vopt-7063) Failed to find 'Op2' in hierarchical name 'Op2'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(21): (vopt-7063) Failed to find 'Op2' in hierarchical name 'Op2.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(22): (vopt-7063) Failed to find 'Sel' in hierarchical name 'Sel'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(22): (vopt-7063) Failed to find 'Sel' in hierarchical name 'Sel.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(23): (vopt-7063) Failed to find 'C_In' in hierarchical name 'C_In'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(23): (vopt-7063) Failed to find 'C_In' in hierarchical name 'C_In.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(24): (vopt-7063) Failed to find 'Mode' in hierarchical name 'Mode'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(24): (vopt-7063) Failed to find 'Mode' in hierarchical name 'Mode.$$'.
+#         Region: slib
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=14, Warnings=0.
+# Error loading design
+# End time: 22:47:07 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 14, Warnings: 0
+# No Design Loaded!
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:47:42 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:47:42 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:47:42 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:47:42 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:47:42 on Nov 12,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): slib.sv(18): (vopt-7063) Failed to find 'Result' in hierarchical name 'Result'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(18): (vopt-7063) Failed to find 'Result' in hierarchical name 'Result.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(19): (vopt-7063) Failed to find 'Equal' in hierarchical name 'Equal'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(19): (vopt-7063) Failed to find 'Equal' in hierarchical name 'Equal.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(20): (vopt-7063) Failed to find 'Op1' in hierarchical name 'Op1'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(20): (vopt-7063) Failed to find 'Op1' in hierarchical name 'Op1.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(21): (vopt-7063) Failed to find 'Op2' in hierarchical name 'Op2'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(21): (vopt-7063) Failed to find 'Op2' in hierarchical name 'Op2.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(22): (vopt-7063) Failed to find 'Sel' in hierarchical name 'Sel'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(22): (vopt-7063) Failed to find 'Sel' in hierarchical name 'Sel.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(23): (vopt-7063) Failed to find 'C_In' in hierarchical name 'C_In'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(23): (vopt-7063) Failed to find 'C_In' in hierarchical name 'C_In.$$'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(24): (vopt-7063) Failed to find 'Mode' in hierarchical name 'Mode'.
+#         Region: slib
+# ** Error (suppressible): slib.sv(24): (vopt-7063) Failed to find 'Mode' in hierarchical name 'Mode.$$'.
+#         Region: slib
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=14, Warnings=0.
+# Error loading design
+# End time: 22:47:43 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 14, Warnings: 0
+# No Design Loaded!
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:48:14 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:48:15 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:48:15 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:48:15 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:48:15 on Nov 12,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.slib(fast)
+# Loading work.Types(fast)
+# Loading work.ALU_sv_unit(fast)
+# Loading work.ALU(fast)
+# ** Error (suppressible): (vsim-3999) Connection type 'wire[1:0]' is incompatible with 'enum reg[1:0] ' for  port (Sel):  Enum types must match.
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'C_In'. The port definition is at: ALU.sv(21).
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# ** Error (suppressible): (vsim-3999) Connection type 'wire[31:0]' is incompatible with 'enum reg ' for  port (Mode):  Enum types must match.
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# Error loading design
+# End time: 22:48:17 on Nov 12,2023, Elapsed time: 0:00:02
+# Errors: 2, Warnings: 1
+# No Design Loaded!
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:51:26 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:51:27 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:51:27 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# ** Error: (vlog-13069) slib.sv(17): near "always": syntax error, unexpected always, expecting IDENTIFIER or TYPE_IDENTIFIER or NETTYPE_IDENTIFIER or '='.
+# End time: 22:51:27 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:51:58 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:51:58 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:51:58 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# 
+# Top level modules:
+# 	slib
+# End time: 22:51:59 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" slib 
+# Start time: 22:51:59 on Nov 12,2023
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.slib(fast)
+# Loading work.Types(fast)
+# Loading work.ALU_sv_unit(fast)
+# Loading work.ALU(fast)
+# ** Error (suppressible): (vsim-3999) Connection type 'wire[1:0]' is incompatible with 'enum reg[1:0] ' for  port (Sel):  Enum types must match.
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'C_In'. The port definition is at: ALU.sv(10).
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# ** Error (suppressible): (vsim-3999) Connection type 'wire[31:0]' is incompatible with 'enum reg ' for  port (Mode):  Enum types must match.
+#    Time: 0 ps  Iteration: 0  Instance: /slib/dut File: slib.sv Line: 17
+# Error loading design
+# End time: 22:52:01 on Nov 12,2023, Elapsed time: 0:00:02
+# Errors: 2, Warnings: 1
+# No Design Loaded!
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:53:29 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:53:29 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:53:29 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# ** Error: slib.sv(9): 'sel_t' is an unknown type.
+# Or did you omit the '()' for an instantiation?
+# ** Error: slib.sv(16): 'Sel_i' is not a variable
+# ** Error: slib.sv(16): Illegal LHS of assignment.
+# ** Error (suppressible): slib.sv(16): (vlog-2997) Cannot assign a packed type 'bit[1:0]' to an unpacked type 'interface sel_t'.
+# End time: 22:53:30 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:53:52 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:53:53 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:53:53 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling module slib
+# ** Error: slib.sv(9): 'sel_t' is an unknown type.
+# Or did you omit the '()' for an instantiation?
+# ** Error: slib.sv(16): 'Sel_i' is not a variable
+# ** Error: slib.sv(16): Illegal LHS of assignment.
+# ** Error (suppressible): slib.sv(16): (vlog-2997) Cannot assign a packed type 'bit[1:0]' to an unpacked type 'interface sel_t'.
+# End time: 22:53:53 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:54:14 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:54:14 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:54:15 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling package slib_sv_unit
+# -- Importing package Types
+# -- Compiling module slib
+# ** Error (suppressible): slib.sv(17): (vlog-8386) An enum variable 'Sel_i' of type 'sel_t' may only be assigned the same enum typed variable or one of its values. Value '0' requires an explicit cast.
+# End time: 22:54:15 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.
+source tb.tcl;tbsim
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:54:58 on Nov 12,2023
+# vlog -reportprogress 300 ALU.sv 
+# -- Compiling package ALU_sv_unit
+# -- Importing package Types
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# End time: 22:54:59 on Nov 12,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vlog 2020.1 Compiler 2020.01 Jan 28 2020
+# Start time: 22:54:59 on Nov 12,2023
+# vlog -reportprogress 300 slib.sv 
+# -- Compiling package slib_sv_unit
+# -- Importing package Types
+# -- Compiling module slib
+# ** Error (suppressible): slib.sv(17): (vlog-8386) An enum variable 'Sel_i' of type 'sel_t' may only be assigned the same enum typed variable or one of its values. Value '0' requires an explicit cast.
+# End time: 22:54:59 on Nov 12,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/questasim64_2020.1/win64/vlog failed.

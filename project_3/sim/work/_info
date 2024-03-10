@@ -1,0 +1,141 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.01, Jan 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dG:/Heidelberg University/Digital Hardware Description and Verification 2023/Tutorials/project_3/sim
+T_opt
+!s110 1700407873
+VzkJ;@nBXYk_RZoKjDk4hV2
+04 10 4 work arbiter_tb fast 0
+=1-2c6fc951465f-655a2a40-38e-7c4
+Z1 o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;2020.1;71
+R0
+T_opt1
+!s110 1700759226
+VkMdRcX:EdGf6hCN?ca9he3
+Z4 04 21 4 work dual_edge_detector_tb fast 0
+=1-2c6fc951465f-655f86b8-337-3280
+R1
+R2
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1700759459
+VL5i[<OeGNljO;N[O>jHbh3
+R4
+=1-2c6fc951465f-655f87a2-291-2618
+R1
+R2
+n@_opt2
+R3
+vArbiter
+Z5 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1700407870
+!i10b 1
+!s100 gTGf>UP<Bd>TZAg5zS7CV0
+Z6 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I=@ShFNMENk`6XcN1RCB0`2
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1700407670
+8../src/arbiter.sv
+F../src/arbiter.sv
+!i122 16
+L0 1 66
+Z8 OL;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1700407870.000000
+!s107 ../src/arbiter.sv|
+!s90 -reportprogress|300|../src/arbiter.sv|
+!i113 0
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+n@arbiter
+varbiter_tb
+R5
+!s110 1700407871
+!i10b 1
+!s100 `QX:Hf=_oCY6fb18;o3`=2
+R6
+I^]I5TC@9Z2cgRcAAD4oiQ0
+R7
+S1
+R0
+w1700407868
+8../src/arbiter_tb.sv
+F../src/arbiter_tb.sv
+!i122 17
+L0 2 52
+R8
+r1
+!s85 0
+31
+!s108 1700407871.000000
+!s107 ../src/arbiter_tb.sv|
+!s90 -reportprogress|300|../src/arbiter_tb.sv|
+!i113 0
+R9
+R2
+vdual_edge_detector
+R5
+!s110 1700759223
+!i10b 1
+!s100 k`6Dk=00<ERj:_@<EO7e<3
+R6
+IazZEMY5W^^YhL9:IM<z:W1
+R7
+S1
+R0
+w1700758514
+8../src/dual_edge_detector.sv
+F../src/dual_edge_detector.sv
+!i122 18
+L0 1 21
+R8
+r1
+!s85 0
+31
+!s108 1700759222.000000
+!s107 ../src/dual_edge_detector.sv|
+!s90 -reportprogress|300|../src/dual_edge_detector.sv|
+!i113 0
+R9
+R2
+vdual_edge_detector_tb
+R5
+!s110 1700759457
+!i10b 1
+!s100 GWJ^]NNECf9E=49Vd?PzF2
+R6
+ILR1zoHk?@Zb^>B?8UU[E32
+R7
+S1
+R0
+w1700758932
+8../src/dual_edge_detector_tb.sv
+F../src/dual_edge_detector_tb.sv
+!i122 21
+L0 1 39
+R8
+r1
+!s85 0
+31
+!s108 1700759457.000000
+!s107 ../src/dual_edge_detector_tb.sv|
+!s90 -reportprogress|300|../src/dual_edge_detector_tb.sv|
+!i113 0
+R9
+R2

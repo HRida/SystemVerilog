@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_3/src/arbiter.sv" into library work
+INFO: [VRFC 10-311] analyzing module Arbiter
+ERROR: [VRFC 10-4982] syntax error near 'if' [/shares/zitipoolhome/ub305/project_3/src/arbiter.sv:40]
+ERROR: [VRFC 10-2790] SystemVerilog keyword if used in incorrect context [/shares/zitipoolhome/ub305/project_3/src/arbiter.sv:40]
+ERROR: [VRFC 10-2865] module 'Arbiter' ignored due to previous errors [/shares/zitipoolhome/ub305/project_3/src/arbiter.sv:1]

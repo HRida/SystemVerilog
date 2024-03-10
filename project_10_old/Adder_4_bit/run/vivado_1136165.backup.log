@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Jan 26 11:06:08 2024
+# Process ID: 1136165
+# Current directory: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run
+# Command line: vivado -mode batch -source run.tcl
+# Log file: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run/vivado.log
+# Journal file: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run/vivado.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.754 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source run.tcl
+# exec xvlog -sv -f adder_4_bit_compile_list.f -L uvm -define NO_OF_TRANSACTIONS=2000 ;
+# exec xelab adder_4_bit_tb_top -relax -s top -timescale 1ns/1ps ;
+# exec xsim top -testplusarg UVM_TESTNAME=adder_4_bit_basic_test -testplusarg UVM_VERBOSITY=UVM_LOW -runall
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 26 11:08:16 2024...

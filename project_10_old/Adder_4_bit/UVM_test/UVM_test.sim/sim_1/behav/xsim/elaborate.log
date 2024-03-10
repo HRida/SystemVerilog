@@ -1,0 +1,26 @@
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 2eb18a5bf9ec4666b114743800cde057 --debug typical --relax --mt 2 -d NO_OF_TRANSACTIONS=2000 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot adder_4_bit_tb_top_behav xil_defaultlib.adder_4_bit_tb_top xil_defaultlib.glbl -log elaborate.log -L UVM -timescale 1ns/1ps 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.adder_4_bit_test_list
+Compiling package uvm.uvm_pkg
+Compiling package std.std
+Compiling package xil_defaultlib.adder_4_bit_agent_pkg
+Compiling package xil_defaultlib.adder_4_bit_ref_model_pkg
+Compiling package xil_defaultlib.adder_4_bit_env_pkg
+Compiling package xil_defaultlib.adder_4_bit_seq_list
+Compiling module xil_defaultlib.dr_cb
+Compiling module xil_defaultlib.rc_cb
+Compiling module xil_defaultlib.adder_4_bit_interface
+Compiling module xil_defaultlib.half_adder
+Compiling module xil_defaultlib.full_adder
+Compiling module xil_defaultlib.adder_4_bit
+Compiling module xil_defaultlib.adder_4_bit_tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot adder_4_bit_tb_top_behav

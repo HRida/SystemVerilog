@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Jan 26 12:12:48 2024
+# Process ID: 1281780
+# Current directory: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run
+# Command line: vivado -mode batch -source run.tcl
+# Log file: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run/vivado.log
+# Journal file: /shares/zitipoolhome/ub305/project_10/Adder_4_bit/run/vivado.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.768 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source run.tcl
+# exec xvlog -sv -f adder_4_bit_compile_list.f -L uvm -define NO_OF_TRANSACTIONS=2000 ;
+# exec xelab adder_4_bit_tb_top -relax -s top -timescale 1ns/1ps ;
+Vivado Simulator v2021.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /shares/nct-opt/software/xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab adder_4_bit_tb_top -relax -s top -timescale 1ns/1ps 
+Multi-threading is on. Using 126 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <adder_8_bit> not found while processing module instance <dut_inst> [/shares/zitipoolhome/ub305/project_10/Adder_4_bit/verif/tb/src/adder_4_bit_tb_top.sv:42]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+child process exited abnormally
+    while executing
+"exec xelab adder_4_bit_tb_top -relax -s top -timescale 1ns/1ps "
+    (file "run.tcl" line 2)
+INFO: [Common 17-206] Exiting Vivado at Fri Jan 26 12:13:17 2024...

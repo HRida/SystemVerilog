@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Nov 17 11:19:09 2023
+# Process ID: 553650
+# Current directory: /shares/zitipoolhome/ub305/project_3/sim
+# Command line: xsim -mode tcl -source {xsim.dir/counter_tb_snapshot/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/project_3/sim/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/project_3/sim/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.727 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source xsim.dir/counter_tb_snapshot/xsim_script.tcl
+source Makefile_cfg_xsim.tcl

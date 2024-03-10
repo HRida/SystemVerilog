@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_5/src/ROM.sv" into library work
+INFO: [VRFC 10-311] analyzing module ROM
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_5/src/ROM_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module ROM_tb

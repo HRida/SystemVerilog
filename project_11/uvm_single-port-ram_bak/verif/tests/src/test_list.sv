@@ -1,0 +1,21 @@
+`ifndef TEST_LIST
+`define TEST_LIST
+
+package test_list;
+
+ import uvm_pkg::*;
+ `include "uvm_macros.svh"
+
+ import env_pkg::*;
+ import seq_list::*;
+
+ //////////////////////////////////////////////////////////////////////////////
+ // including test list
+ //////////////////////////////////////////////////////////////////////////////
+
+ `include "test.sv"
+
+endpackage
+
+`endif
+
