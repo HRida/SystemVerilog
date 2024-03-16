@@ -31,12 +31,12 @@ module sync_fifo #(
         .clk  (clk              ),
         .addra(wr_ptr           ),
         .dina (wr_data          ),
-        .wea  (~fifo_full &push ),
+        .wea  (~fifo_full & push),
         .addrb(rd_ptr           ),
         .doutb(rd_data          )
     );
 
-        //WRITE operation logic
+    //WRITE operation logic
 	//----------------------
 	always_comb
 		wr_ptr_nxt = wr_ptr + 1;
@@ -53,7 +53,7 @@ module sync_fifo #(
 		end
 	end
 
-        //READ operation logic
+    //READ operation logic
 	//----------------------
 	always_comb 
 		rd_ptr_nxt = rd_ptr + 1;

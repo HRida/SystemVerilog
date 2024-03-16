@@ -12,8 +12,8 @@ module ROM_tb;
 
 	//Instantiate the DUT
 	ROM #(.DATA_WIDTH(DATA_WIDTH),
-	      .DEPTH(DEPTH),
-              .INIT_FILE(INIT_FILE)) DUT (.*);
+	      .DEPTH(DEPTH), 
+		  .INIT_FILE(INIT_FILE)) DUT (.*);
 
 	//Generate the clock input to the DUT
 	initial begin

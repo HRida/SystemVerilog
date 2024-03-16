@@ -24,7 +24,7 @@ module sync_fifo #(
 	//define a "RAM" signal to act as internal storage for the memory
 	logic [ADDR_WIDTH-1:0] ram [FIFO_DEPTH];
 
-        //WRITE operation logic
+    //WRITE operation logic
 	//----------------------
 	always_comb
 		wr_ptr_nxt = wr_ptr + 1;
@@ -41,7 +41,7 @@ module sync_fifo #(
 		end
 	end
 
-        //READ operation logic
+    //READ operation logic
 	//----------------------
 	always_comb 
 		rd_ptr_nxt = rd_ptr + 1;

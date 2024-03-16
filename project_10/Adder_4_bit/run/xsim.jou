@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Thu Mar 14 11:26:34 2024
+# Process ID: 3881060
+# Current directory: /shares/zitipoolhome/ub305/Tutorials/project_10/Adder_4_bit/run
+# Command line: xsim -mode tcl -source {xsim.dir/top/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/Tutorials/project_10/Adder_4_bit/run/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/Tutorials/project_10/Adder_4_bit/run/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1241.866 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source xsim.dir/top/xsim_script.tcl
+run -all
