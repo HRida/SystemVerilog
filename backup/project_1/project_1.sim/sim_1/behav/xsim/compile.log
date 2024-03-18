@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_1/project_1.srcs/sim_1/new/testbench2.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module testbench2
-ERROR: [VRFC 10-2989] 'Rest' is not declared [/shares/zitipoolhome/ub305/project_1/project_1.srcs/sim_1/new/testbench2.sv:27]
-ERROR: [VRFC 10-2865] module 'testbench2' ignored due to previous errors [/shares/zitipoolhome/ub305/project_1/project_1.srcs/sim_1/new/testbench2.sv:23]

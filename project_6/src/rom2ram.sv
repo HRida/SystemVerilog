@@ -1,43 +1,78 @@
-module parallel2serial #(
-	DATA_WIDTH = 4
-	) (
+module DMA #(parameter DATA_WIDTH = 8, parameter ADDR_WIDTH = 4) 
+	(
 	input logic clk,
-	input logic reset,
-	input logic [DATA_WIDTH-1:0] parin, //parallel input
-	input logic load, //load the parallel input
-	output logic completed, //notifies end of serialization
-	output logic serout //serial output
+	input logic rst,
+	input logic start, // to start a transfer
+	output logic done, //notify end of transfer
+	//base source address for the transfer
+	input logic [ADDR_WIDTH-1:0] srcAddr,
+	//base destination address for the transfer
+	input logic [ADDR_WIDTH-1:0] destAddr,
+	//data amount to be transferred
+	input logic [ADDR_WIDTH-1:0] data_amt,
+	);
+    logic [31:0] current_element;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset)
+            done <= 1'b0;
+        else if (current_element < data_amt) begin
+            // Perform DMA transfer
+            RAM[destAddr + current_element] <= ROM[srcAddr + current_element];
+            current_element <= current_element + 1;
+        end else begin
+            done <= 1'b1;
+        end
+    end
+endmodule
+
+module ROM #(parameter INIT_FILE = "rom_file.mem", parameter DATA_WIDTH = 8, parameter DEPTH = 8, localparam ADDR_WIDTH = $clog2(DEPTH)) 
+	(
+	input logic clk,
+	input logic  [ADDR_WIDTH-1:0] rd_addr,
+	output logic [DATA_WIDTH-1:0] rd_data
 	);
 
-	//buffer to hold parallel input value when load is set to 1
-	logic [DATA_WIDTH-1:0] buffered_parin;
-	//counter to count bits serially output
-	logic [$clog2(DATA_WIDTH)-1:0] counter;
+	logic [DATA_WIDTH-1:0] rom [DEPTH];
 
+	initial 
+		$readmemh(INIT_FILE, rom);
+
+	always_ff @(posedge clk) 
+		rd_data <= rom[rd_addr];
+
+endmodule : ROM
+
+module RAM #(parameter DATAWIDTH=16, parameter ADDRWIDTH=8)
+	(
+	input logic clk,
+	//PORT A (read/write port)
+	input logic [ADDRWIDTH-1:0] addra, //write address
+	input logic [DATAWIDTH-1:0] dina, //data input
+	input logic wea, //write enable
+	output logic [DATAWIDTH-1:0] douta, //data output
+
+	//PORT B (read/write port)
+	input logic [ADDRWIDTH-1:0] addrb, //write address
+	input logic [DATAWIDTH-1:0] dinb, //data input
+	input logic web, //write enable
+	output logic [DATAWIDTH-1:0] doutb //data output
+ 	);
+	
+	//declare an unpacked array
+	// signal for storing data
+ 	logic [DATAWIDTH-1:0] mem [0:(1<<ADDRWIDTH)-1];
+
+	//Port A can read or write data
 	always_ff @(posedge clk) begin
-		if (reset) begin
-			serout <= 0;
-			counter <= 0;
-			completed <= 1'b0;
-		end else if (load) begin
-			buffered_parin <= parin;
-			counter <= 0;
-			serout <= 0;
-			completed <= 1'b0;
-		end else begin
-			serout <= buffered_parin[DATA_WIDTH-1];
-
-			//flag completion here
-			if (counter == DATA_WIDTH-1) begin 
-				completed <= 1'b1;
-			//otherwise increment counter and shift the stored parallel input
-			end else begin
-				counter <= counter + 1;
-				buffered_parin[DATA_WIDTH-1:1] <= buffered_parin[DATA_WIDTH-2:0];
-			end
-		end
+	if (wea) mem[addra] <= dina;
+		douta <= mem[addra];
 	end
-
-endmodule : parallel2serial
-
+ 	
+	//Port B can read or write data
+ 	always_ff @(posedge clk) begin
+ 		if (web) mem[addrb] <= dinb;
+ 			doutb <= mem[addrb];
+ 	end
+endmodule : true_dualport_mem
 

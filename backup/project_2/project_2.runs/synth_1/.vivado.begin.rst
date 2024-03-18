@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="ub305" Host="nct-epic" Pid="3683117" HostCore="128" HostMemory="660356328">
-    </Process>
-</ProcessHandle>
