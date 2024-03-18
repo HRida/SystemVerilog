@@ -1,10 +1,10 @@
-module counter (
-    input logic clk,
-    clr,
-    en,
-    ld,
-    input logic [7:0] data,
-    output logic [7:0] count
+module simple_counter (
+  input logic clk,
+  clr,
+  en,
+  ld,
+  input logic [7:0] data,
+  output logic [7:0] count
 );
 
   timeunit 1ns; timeprecision 100ps;
@@ -14,4 +14,4 @@ module counter (
     else if (ld) count <= data;
     else if (en) count <= count + 1'd1;
   end
-endmodule : counter
+endmodule : simple_counter

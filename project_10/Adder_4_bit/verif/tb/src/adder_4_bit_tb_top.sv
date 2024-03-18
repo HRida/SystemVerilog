@@ -40,7 +40,7 @@ module adder_4_bit_tb_top;
 
 
   adder_4_bit dut_inst(
-                          .x(adder_4_bit_intf.x),
+        .x(adder_4_bit_intf.x),
 			  .y(adder_4_bit_intf.y),
 			  .cin(adder_4_bit_intf.cin),
 			  .sum(adder_4_bit_intf.sum),

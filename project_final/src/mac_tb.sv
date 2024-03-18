@@ -8,11 +8,11 @@ module mac_tb ();
   initial $readmemh("../c_test/inputData", testData);  // read from inputData file
 
   mac t1 (
-      clk,
-      reset,
-      a,
-      b,
-      f
+    clk,
+    reset,
+    a,
+    b,
+    f
   );
 
   initial clk = 0;  //set up clock
@@ -30,12 +30,16 @@ module mac_tb ();
     @(posedge clk) #1 reset = 0;
 
     for (i = 0; i < 1000; i = i + 1) begin  // test against the test data
+
       @(posedge clk) #1 a = testData[2*i][7:0];
+
       b = testData[2*i+1][7:0];
     end
+
     @(posedge clk);
     @(posedge clk);
     @(posedge clk);
+
     $fclose(filehandle);
     $finish;
   end
