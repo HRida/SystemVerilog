@@ -5,7 +5,7 @@ module mac_tb ();
   logic signed [7:0] testData[1999:0];  //  input data array
   integer i;
   integer filehandle = $fopen("output");  // file for writing output
-  initial $readmemh("../c_test/inputData", testData);  // read from inputData file
+  initial $readmemh("../../c_test/inputData", testData);  // read from inputData file
 
   mac t1 (
     clk,

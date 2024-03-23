@@ -14,7 +14,7 @@ module TopModule_1 (
     .data(rom_data)
   );
 
-  RAM ram_inst (
+  RAM ram_inst (  // simple_dualport_memory
     .address(ram_address),
     .write_data(rom_data),
     .write_enable(1'b1),
@@ -49,7 +49,7 @@ module TopModule_2 (
     .rd_data(rd_data)
   );
 
-  RAM ram_inst (
+  RAM ram_inst (  // true_dualport_memory
     .clk(clk),
     .addra(addra),
     .dina(dina),

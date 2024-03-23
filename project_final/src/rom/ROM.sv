@@ -18,5 +18,8 @@ module ROM #(
 endmodule : ROM
 
 
-
+module ROM #(parameter SIZE = 256) (input [7:0] address, output logic [7:0] data);
+  logic [7:0] memory [0:SIZE-1];
+  always_ff @(*) data = memory[address];
+endmodule
 

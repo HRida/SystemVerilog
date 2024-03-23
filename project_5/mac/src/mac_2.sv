@@ -1,9 +1,9 @@
 module mac (
-    input clk,
-    input reset,
-    input signed [7:0] a,
-    input signed [7:0] b,
-    output logic signed [15:0] f
+  input clk,
+  input reset,
+  input signed [7:0] a,
+  input signed [7:0] b,
+  output logic signed [15:0] f
 );
 
   logic signed [7:0] l1, l2;
@@ -23,7 +23,7 @@ module mac (
     if (reset == 1) f <= 0;
     else f <= add;
   end
-  
+
   always_comb begin
     mul = l1 * l2;
     add = mul + f;
