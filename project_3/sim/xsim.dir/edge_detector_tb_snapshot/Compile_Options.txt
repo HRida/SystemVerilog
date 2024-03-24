@@ -1,0 +1,1 @@
+-debug "typical" -top "edge_detector_tb" -snapshot "edge_detector_tb_snapshot" 

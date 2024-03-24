@@ -5,7 +5,7 @@ module DMA #(
   input logic clk,
   input logic reset,
   input logic start, // flag to start a transfer
-  input logic srcPtr, // pointer to the source address
+  input logic [7:0] srcPtr, // pointer to the source address
   input logic [ADDR_WIDTH-1:0] src_addr, // base source address for the transfer
   input logic destPtr, // pointer to the destination address
   input logic [ADDR_WIDTH-1:0] dest_addr, // base destination address for the transfer

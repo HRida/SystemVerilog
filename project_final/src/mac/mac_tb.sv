@@ -1,4 +1,4 @@
-module MAC_tb;
+module mac_tb;
   // Local Parameters
   localparam WIDTH = 8;
   // Signals
@@ -7,7 +7,7 @@ module MAC_tb;
   logic [2*WIDTH-1:0] acc;
 
   // Instantiate the MAC module
-  MAC #(WIDTH) mac_dut (.*);
+  mac #(WIDTH) mac_dut (.*);
 
   // Clock generation
   initial begin

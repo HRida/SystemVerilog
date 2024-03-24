@@ -50,7 +50,7 @@ module rom2ram_topmodule #(
 endmodule : rom2ram_topmodule
 
 module RAM #(parameter SIZE = 256) (input [7:0] address, input [7:0] data_in, input write_enable, output logic [7:0] data_out);
-  reg [7:0] memory [0:SIZE-1];
+  logic [7:0] memory [0:SIZE-1];
   always_ff @(posedge write_enable) memory[address] <= data_in;
   always_ff @(*) data_out = memory[address];
 endmodule

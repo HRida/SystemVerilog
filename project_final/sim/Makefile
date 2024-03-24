@@ -1,5 +1,5 @@
-SRC_PATH=../src
-TESTBENCH_NAME=tb
+SRC_PATH=../src/mac
+TESTBENCH_NAME=mac_tb
 
 all: simulate
 

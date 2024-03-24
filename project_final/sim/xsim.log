@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Sun Mar 24 01:55:04 2024
+# Process ID: 2592601
+# Current directory: /shares/zitipoolhome/ub305/Verilog/project_final/sim
+# Command line: xsim -mode tcl -source {xsim.dir/mac_tb_snapshot/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/Verilog/project_final/sim/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/Verilog/project_final/sim/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.784 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source xsim.dir/mac_tb_snapshot/xsim_script.tcl
+# xsim {mac_tb_snapshot} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Time=5000: operand_a=00000011, operand_b=00000101, acc=xxxxxxxxxxxxxxxx
+Time=15000: operand_a=00000010, operand_b=00000011, acc=0000000000000000
+Time=25000: operand_a=00001111, operand_b=00000001, acc=0000000000000000
+Time=35000: operand_a=00000010, operand_b=00000010, acc=0000000000000110
+Time=45000: operand_a=00000010, operand_b=00000010, acc=0000000000010101
+Time=55000: operand_a=00000010, operand_b=00000010, acc=0000000000011001
+$stop called at time : 60 ns : File "/shares/zitipoolhome/ub305/Verilog/project_final/src/mac/mac_tb.sv" Line 42
+exit
+INFO: [Common 17-206] Exiting xsim at Sun Mar 24 01:55:15 2024...

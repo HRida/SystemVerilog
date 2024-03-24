@@ -1,5 +1,5 @@
 SRC_PATH=../src
-TESTBENCH_NAME=counter_tb
+TESTBENCH_NAME=edge_detector_tb
 
 all: simulate
 

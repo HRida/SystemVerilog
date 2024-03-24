@@ -1,25 +1,32 @@
-module dot_product #(
-  parameter N = 4,
+ module dot_product #(
+  parameter N = 2,
   parameter DW = 8
 ) (
-  input logic[(DW * N) -1 : 0] inp1,
-  input logic[(DW * N) -1 : 0] inp2,
-  output logic[(2*DW + $bits(N)) - 1 : 0] outp
-);
-
-  //locals
-  genvar i;
-  logic [(2*DW + $bits(N)) - 1 : 0] sums[0 : N - 1];  // intermediate product sums
-
-  ///compute
-  assign sums[0] = inp1[DW-1 : 0] * inp2[DW-1 : 0];
-
-  generate
-    for (i = 1; i < N; i = i + 1) begin : sum_loop
-      assign sums[i] = sums[i-1] + inp1[(i+1)*DW-1 : i*DW] * inp2[(i+1)*DW-1 : i*DW];
+  input logic clk,
+  input logic reset,
+  input logic enable,
+  input int inp1[0:1],
+  input int inp2[0:1],
+  output int sum
+);  
+    
+    int temp_sum = 0;
+    
+    always_ff @(posedge clk)
+    begin
+        if(reset == 1)
+            temp_sum = 0;
+        else if (enable == 1)
+        begin
+            temp_sum = 0;
+            for (int i = 0; i < N; i = i + 1) begin : sum_loop // $size(inp1)
+                temp_sum = temp_sum  + inp1[i] * inp2[i];
+            end 
+        end else begin
+            temp_sum = 0;
+        end 
+           
+        sum <= temp_sum;
     end
-  endgenerate
-
-  assign outp = sums[N-1];
-
-endmodule
+    
+endmodule : dot_product

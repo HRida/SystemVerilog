@@ -1,4 +1,4 @@
-module MAC #(
+module mac #(
   parameter DATA_WIDTH = 4
 ) (
   input logic clk,
@@ -23,4 +23,4 @@ module MAC #(
 
   assign acc = accumulator;
 
-endmodule : MAC
+endmodule : mac

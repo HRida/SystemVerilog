@@ -1,4 +1,24 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_3/src/counter.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/arbiter.sv" into library work
+INFO: [VRFC 10-311] analyzing module arbiter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/arbiter_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module arbiter_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/counter.sv" into library work
 INFO: [VRFC 10-311] analyzing module counter
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/project_3/src/coutner_tb.sv" into library work
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/coutner_tb.sv" into library work
 INFO: [VRFC 10-311] analyzing module counter_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/dual_edge_detector.sv" into library work
+INFO: [VRFC 10-311] analyzing module dual_edge_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/dual_edge_detector_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module dual_edge_detector_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/edge_detector.sv" into library work
+INFO: [VRFC 10-311] analyzing module edge_detector
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/edge_detector_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module edge_detector_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/moore_FSM.sv" into library work
+INFO: [VRFC 10-311] analyzing module moore_FSM
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/moore_FSM_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module moore_FSM_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/mux.sv" into library work
+INFO: [VRFC 10-311] analyzing module multiplexer
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_3/src/mux_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module multiplexer_tb

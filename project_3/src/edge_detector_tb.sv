@@ -35,4 +35,9 @@ module edge_detector_tb;
     #10 $finish;
   end
 
+  initial begin
+    $dumpfile("waveform.vcd");
+    $dumpvars; //dump all variables
+  end
+
 endmodule

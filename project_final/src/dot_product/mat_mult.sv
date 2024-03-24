@@ -1,33 +1,28 @@
 module mat_mult #(
-  parameter N_ROWS = 4,
-  parameter N_COLUMNS = 4,
+  parameter N = 2,
   parameter DW = 8
 ) (
-  input clk,
-  input reset,
-  input logic signed [DW-1:0] mat1 [0 : N_ROWS-1] [0 : N_COLUMNS-1],
-  input logic signed [DW-1:0] mat2 [0 : N_ROWS-1] [0 : N_COLUMNS-1],
-  output logic signed [DW*2-1:0] mat_out [0 : N_ROWS-1] [0 : N_COLUMNS-1]
+  input logic clk,
+  input logic reset,
+  input logic enable,
+  input int mat1 [0 : N-1] [0 : N-1],
+  input int mat2 [0 : N-1] [0 : N-1],
+  output int mat_out [0 : N-1] [0 : N-1]
 );
 
-  ///compute
-  assign sums[0] = inp1[0] * inp2[0];
-
-  dot_product_2 #(
-    .N(N_ROWS),
-    .DW(DW)
-  ) dot_product_2_dut (
-    .clk(clk),
-    .reset(reset),
-    .inp1(mat1[0]),
-    .inp2(mat2[0]),
-    .sums(mat_out)
-  );
-
-  // generate
-  //   for (genvar i = 1; i < N_ROWS; i = i + 1) begin : mat_loop
-  //     assign sums[i] = sums[i-1] + inp1[i] * inp2[i];
-  //   end
-  // endgenerate
+  generate
+    for (genvar i = 0; i < N; i = i + 1) begin : row_loop
+      for (genvar j = 0; j < N; j = j + 1) begin : col_loop
+        dot_product #(.N(N), .DW(DW)) dot_product_dut (
+          .clk(clk),
+          .reset(reset),
+          .enable(enable),
+          .inp1(mat1[i]),
+          .inp2(mat2[j]),
+          .sum(mat_out[i][j])
+        );
+      end
+    end
+  endgenerate  
 
 endmodule : mat_mult
