@@ -1,4 +1,4 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/mac/mac.sv" into library work
-INFO: [VRFC 10-311] analyzing module mac
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/mac/mac_tb.sv" into library work
-INFO: [VRFC 10-311] analyzing module mac_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/rom/rom.sv" into library work
+INFO: [VRFC 10-311] analyzing module rom
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/rom/rom_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module rom_tb

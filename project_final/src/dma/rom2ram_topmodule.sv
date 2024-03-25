@@ -1,82 +1,76 @@
 module rom2ram_topmodule #(
   parameter DATA_WIDTH = 8,
-  parameter DEPTH = 8,
-  parameter INIT_FILE = "rom_file.mem",
+  parameter DEPTH = 16,
+  parameter ROM_FILE = "rom_file.mem",
   localparam ADDR_WIDTH = $clog2(DEPTH)
 ) (
   input clk,
   input reset,
-  input [ADDR_WIDTH-1:0] rom_address,
-  input [ADDR_WIDTH-1:0] ram_address,
-  input [ADDR_WIDTH-1:0] num_elements,
-  output reg done
+  input start,
+  output done
 );
-  logic [7:0] rom_data;
-  logic [7:0] ram_data;
+  // cpu definitions  
+  logic [ADDR_WIDTH-1:0] starting_rom_addr;
+  logic [ADDR_WIDTH-1:0] starting_ram_addr;
+  // number of elements to be read
+  logic [ADDR_WIDTH-1:0] num_elements;
 
-  ROM rom_inst (
-    .clk(clk),
-    .rd_addr(rom_address),
-    .rd_data(rom_data)
-  );
+  // rom inputs & outputs  
+  logic [ADDR_WIDTH-1:0] rom_address; 
+  logic [ADDR_WIDTH-1:0] rom_data;
 
-  //Instantiate the DUT
-  ROM #(
+  // ram inputs & outputs
+  logic [ADDR_WIDTH-1:0] ram_address_write;
+  logic [ADDR_WIDTH-1:0] ram_address_read;
+  logic [ADDR_WIDTH-1:0] ram_data;
+  
+  // ROM is given addresses and retreive back data of one address (one element) from the defined "ROM_FILE" 
+  rom #(
     .DATA_WIDTH(DATA_WIDTH),
     .DEPTH(DEPTH),
-    .INIT_FILE(INIT_FILE)
-  ) DUT (
+    .ROM_FILE(ROM_FILE)
+  ) rom_dut (
+    .clk(clk), // input comes from Arbiter
+    .start_rom(start_rom), // input from DMATopModule
+    .rom_addr(rom_address), // input comes from DMA
+    .rom_data(rom_data) // output goes to DMA
+  );
+
+  // DMA is given rom data & retrieve back ram data & addresses 
+  dma dma_dut (
+    .clk         (clk), // input comes from Arbiter
+    .reset       (reset), // input comes from Arbiter
+    .start_dma   (start_dma), // input comes from DMATopModule
+    .data_amt    (num_elements), // input comes from DMATopModule
+    .starting_rom(starting_rom_addr), // input comes from DMATopModule
+    .starting_ram(starting_ram_addr), // input comes from DMATopModule
+    .rom_data    (rom_data), // input from ROM to DMA
+    .rom_addr    (rom_address), // output from DMA to ROM
+    .ram_addr    (ram_address), // output from DMA to RAM
+    .ram_data    (ram_data), // output from DMA to RAM
+    .done        (done), // output goes to Arbiter
+    .ram_wea     (ram_wea) // output from DMA to RAM
+  );
+
+  simple_dualport_mem simple_dualport_mem (  
     .clk(clk),
-    .rd_addr(rom_address),
-    .rd_data(num_elements)
+    .addra(ram_address),
+    .dina(ram_data),
+    .wea(ram_wea),
+    .addrb(),
+    .doutb(matrix_data)
   );
 
-  simple_dualport_mem ram_inst (  // simple_dualport_memory
-    .address(ram_address),
-    .write_data(rom_data),
-    .write_enable(1'b1),
-    .read_data(ram_data)
-  );
-
-  DMA dma_inst (
-    .clk(clk),
-    .reset(reset),
-    .start(start),
-    .src_addr(rom_address),
-    .dest_addr(ram_address),
-    .data_amt(num_elements),
-    .done(done)
-  );
-endmodule : rom2ram_topmodule
-
-module RAM #(parameter SIZE = 256) (input [7:0] address, input [7:0] data_in, input write_enable, output logic [7:0] data_out);
-  logic [7:0] memory [0:SIZE-1];
-  always_ff @(posedge write_enable) memory[address] <= data_in;
-  always_ff @(*) data_out = memory[address];
-endmodule
-
-module DMA #(parameter SIZE = 256) (input [7:0] src_address, input [7:0] dst_address, input [7:0] length, input start, input clk, ROM rom, RAM ram);
-  integer i;
-  always @(posedge start) begin
-    for (i = 0; i < length; i = i + 1) begin
-      @(posedge clk);
-      ram.write_enable = 1;
-      ram.address = dst_address + i;
-      ram.data_in = rom.memory[src_address + i];
+  always_ff @(posedge clk) begin
+    if (reset == 1)
+    begin
+      
     end
-    ram.write_enable = 0;
-  end
-endmodule
+  end  
 
-module testbench;
-  reg [7:0] rom_data [0:255];
   initial begin
-    // Initialize ROM data
-    for (integer i = 0; i < 256; i = i + 1) rom_data[i] = i;
-    ROM rom(.*, rom_data);
-    RAM ram(.*, .write_enable(0));
-    DMA dma(.src_address(0), .dst_address(0), .length(256), .start(1), .clk(1), .rom(rom), .ram(ram));
-    // Check RAM data
-    for (integer i = 0; i < 256; i = i + 1) assert(ram.memory[i] == i);
+    rom_address = 0; // for loop
+
+    // delayness waiting for rom to be ready
   end
-endmodule
+endmodule : rom2ram_topmodule

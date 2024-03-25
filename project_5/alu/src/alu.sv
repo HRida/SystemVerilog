@@ -1,10 +1,10 @@
 // timeunit 1ns; timeprecision 100ps; used in slib
-import types::*;
+import data_types::*;
 
-module ALU (
+module alu (
   input  logic       Clock,
-  output reg [7:0]   Result,
-  output reg         Equal,
+  output logic [7:0]   Result,
+  output logic         Equal,
   input  logic [3:0] Op1,
   input  logic [3:0] Op2,
   input  sel_t       Sel,
@@ -23,4 +23,4 @@ module ALU (
     endcase
   end
 
-endmodule : ALU
+endmodule : alu

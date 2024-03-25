@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_5/alu/src/alu.sv" into library work
+INFO: [VRFC 10-311] analyzing module alu
+ERROR: [VRFC 10-2989] 'SUBTRACT' is not declared [/shares/zitipoolhome/ub305/Verilog/project_5/alu/src/alu.sv:20]
+ERROR: [VRFC 10-2989] 'MULTIPLY' is not declared [/shares/zitipoolhome/ub305/Verilog/project_5/alu/src/alu.sv:21]
+ERROR: [VRFC 10-2865] module 'alu' ignored due to previous errors [/shares/zitipoolhome/ub305/Verilog/project_5/alu/src/alu.sv:4]

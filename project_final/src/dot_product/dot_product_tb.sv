@@ -5,7 +5,7 @@
 parameter CLK_PERIOD = 12.5; 
 parameter HALF_PERIOD = 0.5 * CLK_PERIOD;
 
-module dot_product_tb ();
+module dot_product_tb;
   
   logic clock = 1'b1;
   logic reset = 1'b0;

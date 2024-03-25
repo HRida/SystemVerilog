@@ -1,1 +1,0 @@
--debug "typical" -top "ParallelCounter_tb" -snapshot "ParallelCounter_tb_snapshot" 

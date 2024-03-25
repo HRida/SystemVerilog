@@ -3,23 +3,24 @@
 `define DATA_WIDTH 2
 
 module mat_mult_tb();
-  parameter N = 2;
+  parameter N_ROWS = 3;
+  parameter N_COLUMNS = 2;
   parameter DW = 8;
 
   logic clk = 1'b1;
   logic reset = 1'b0;
   logic enable = 1'b0;
-  int mat1 [0 : N-1] [0 : N-1];
-  int mat2 [0 : N-1] [0 : N-1];
-  int mat_out [0 : N-1] [0 : N-1];
+  int mat1 [0 : N_ROWS-1] [0 : N_COLUMNS-1];
+  int mat2 [0 : N_ROWS-1] [0 : N_COLUMNS-1];
+  int mat_out [0 : N_ROWS-1] [0 : N_COLUMNS-1];
 
   // Clock generation
   always #5 clk = ~clk;
 
   initial begin
     //array initialization
-    mat1 = '{'{1, 2}, '{3, 4}};
-    mat2 = '{'{1, 2}, '{3, 4}};
+    mat1 = '{'{1, 2}, '{3, 4}, '{5, 6}};
+    mat2 = '{'{1, 2}, '{3, 4}, '{0, 0}};
     // vec1 = '{1, 2};
     // vec2 = '{1, 2};
     
@@ -30,7 +31,7 @@ module mat_mult_tb();
   end
 
   // Instantiate mat_mult
-  mat_mult #(.N(N), .DW(DW)) mat_mult_dut (
+  mat_mult #(.N_ROWS(N_ROWS), .N_COLUMNS(N_COLUMNS), .DW(DW)) mat_mult_dut (
     .clk(clk),
     .reset(reset),
     .enable(enable),
@@ -68,12 +69,12 @@ module mat_mult_tb();
     #100ns;
 
     // Check results
-    for (int i = 0; i < N; i = i + 1) begin
-      for (int j = 0; j < N; j = j + 1) begin
+    for (int i = 0; i < N_ROWS; i = i + 1) begin
+      for (int j = 0; j < N_COLUMNS; j = j + 1) begin
         $display("mat_out[%0d][%0d] = %0d", i, j, mat_out[i][j]);
       end
     end
+    
+    #100ns; $finish;
   end
-  
-  #100ns $finish;
 endmodule

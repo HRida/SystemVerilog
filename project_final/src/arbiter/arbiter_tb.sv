@@ -6,17 +6,14 @@ module arbiter_tb;
    logic g0, g1, g2;
 
    //instantiate the amazing counter
-   //(DUT: Design Under Test)
-   Arbiter DUT(.clk(clk),
+   arbiter arbiter_dut(.clk(clk),
                .reset(reset),
                .r0(r0),
                .r1(r1),
                .r2(r2),
                .g0(g0),
                .g1(g1),
-               .g2(g2)); // using dots
-   // arbiter DUT(clk, reset, r0, r1, r2, g0 , g1, g2); // no dots
-
+               .g2(g2));
 
    //generate clock signal
    always #5ns clk = !clk;
@@ -42,8 +39,8 @@ module arbiter_tb;
       #20ns r1 <=0;
       #20ns r2 <=0;
 
-    //   #40ns;  // finish simu after 400 ns
-    //   $finish;
+      #40ns; 
+      $finish;
    end
 
    initial begin

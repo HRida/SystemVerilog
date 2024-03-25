@@ -1,13 +1,16 @@
-SRC_PATH=../src/mac
-TESTBENCH_NAME=mac_tb
+SRC_PATH=../src
+TOP_NAME=rom
+TESTBENCH_NAME=rom_tb
 
 all: simulate
 
 sv_compile:
-	xvlog -sv $(SRC_PATH)/*
+	cp $(SRC_PATH)/$(TOP_NAME)/rom_file_1.mem .
+	cp $(SRC_PATH)/$(TOP_NAME)/rom_file_2.mem .
+	xvlog -sv $(SRC_PATH)/$(TOP_NAME)/$(TOP_NAME).sv $(SRC_PATH)/$(TOP_NAME)/$(TESTBENCH_NAME).sv
 
 elaborate: sv_compile
-	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot 
+	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot
 
 simulate: elaborate
 	xsim $(TESTBENCH_NAME)_snapshot -R 
@@ -19,6 +22,5 @@ simulate_dump: elaborate
 simulate: elaborate
 
 clean:
-	#find . -type f ! -name 'Makefile*' -execdir rm {} +
 	find . -type f ! -name 'Makefile*' | xargs rm 
-	rm -rf xsim*
+	rm -rf xsim.dir

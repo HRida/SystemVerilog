@@ -8,7 +8,18 @@ module simple_dualport_mem_tb;
   logic [7:0] addrb;  //read address
   logic [63:0] doutb;  //data output
 
-  dualport_mem DUT (.clk(clk), );
+  //define a simple "RAM" module to act as internal storage for the memory
+  simple_dualport_mem #(
+    .DATA_WIDTH(8),
+    .DEPTH(64)
+  ) simple_dualport_mem_dut (
+    .clk(clk),
+    .addra(addra),
+    .dina(dina),
+    .wea(wea),
+    .addrb(addrb),
+    .doutb(doutb)
+  );
 
   always #5 clk = ~clk;
   initial begin
@@ -32,6 +43,6 @@ module simple_dualport_mem_tb;
   addrb = %0h, doutb = %d", $time, addrb, doutb);
       assert (doutb == 2 * i);
     end
-    #10 $finish;
+    #100 $finish;
   end
 endmodule

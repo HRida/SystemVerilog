@@ -1,18 +1,18 @@
 `timescale 1 ns / 1 ps
-import types::*;
+import data_types::*;
 
-module ALU_tb;
+module alu_tb;
   // Declare the signals
   logic [3:0] Op1;
   logic [3:0] Op2;
   sel_t Sel;
   logic C_In;  // carry in
   mode_t Mode;
-  wire [7:0] Result;
-  wire Equal;
+  logic [7:0] Result;
+  logic Equal;
 
   // Instantiate the ALU
-  ALU alu_dut (
+  alu alu_dut (
     .Result(Result),
     .Equal(Equal),
     .Op1(Op1),

@@ -1,4 +1,4 @@
-module ALU_2 #(
+module alu_2 #(
   parameter WIDTH = 4
 ) (
   input logic [WIDTH-1:0] operand_a,
