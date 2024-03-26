@@ -28,5 +28,7 @@
            
         sum <= temp_sum;
     end
+
+// assign sum = temp_sum;
     
 endmodule : dot_product

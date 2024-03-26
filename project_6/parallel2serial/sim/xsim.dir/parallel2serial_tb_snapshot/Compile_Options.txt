@@ -1,0 +1,1 @@
+-debug "typical" -top "parallel2serial_tb" -snapshot "parallel2serial_tb_snapshot" 

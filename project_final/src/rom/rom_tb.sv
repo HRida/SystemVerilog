@@ -3,34 +3,24 @@ module rom_tb;
   localparam DATA_WIDTH = 8;
   localparam DEPTH = 16;
   localparam ADDR_WIDTH = $clog2(DEPTH);
-  localparam ROM_FILE_1 = "rom_file_1.mem";
-  localparam ROM_FILE_2 = "rom_file_2.mem";
+  localparam INIT_FILE = "rom_file.mem";
 
   //testbench signals to be connected to DUT
   logic clk;
-  logic [ADDR_WIDTH-1:0] rd_addr;
-  logic [DATA_WIDTH-1:0] rd_data_1;
-  logic [DATA_WIDTH-1:0] rd_data_2;
+  logic start_rom;
+  logic [ADDR_WIDTH-1:0] rom_addr;
+  logic [DATA_WIDTH-1:0] rom_data;
 
   //Instantiate the DUT
   rom #(
     .DATA_WIDTH(DATA_WIDTH),
     .DEPTH(DEPTH),
-    .ROM_FILE(ROM_FILE_1)
-  ) rom_1_dut (
+    .INIT_FILE(INIT_FILE)
+  ) rom_dut (
     .clk(clk),
-    .rd_addr(rd_addr),
-    .rd_data(rd_data_1)
-  );
-
-  rom #(
-    .DATA_WIDTH(DATA_WIDTH),
-    .DEPTH(DEPTH),
-    .ROM_FILE(ROM_FILE_2)
-  ) rom_2_dut (
-    .clk(clk),
-    .rd_addr(rd_addr), 
-    .rd_data(rd_data_2)
+    .start_rom(start_rom),
+    .rom_addr(rom_addr), 
+    .rom_data(rom_data)
   );
 
   //Generate the clock
@@ -42,18 +32,19 @@ module rom_tb;
   //Generate the stimulus
   initial begin
     //init signals
-    rd_addr = 0;
+    rom_addr = 0;
+    start_rom = 1;
     #10;
     for (int i = 0; i < DEPTH; i++) begin
-      rd_addr = i;
+      rom_addr = i;
       #10;
-      // assert (rd_data_1 == i && rd_data_2 == i)
-      // else $fatal(1, "Something went \
-	  //	wrong at time %0t ! Expected = %0h, Got for rom-1: %0h / rom-2: %0h", $time, i, rd_data_1, rd_data_2);
+      assert (rom_data == i) 
+      else $fatal(1, "Something went \
+	      wrong at time %0t ! Expected = %0h, Got for rom: %0h", $time, i, rom_data);
     end
 
     //finish the simulation
-    #100 $finish;
+    #10 $finish;
   end
 
   initial begin

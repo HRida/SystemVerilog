@@ -1,12 +1,10 @@
 SRC_PATH=../src
-TOP_NAME=ROM2RAM
-TESTBENCH_NAME=ROM2RAM_tb
+TESTBENCH_NAME=parallel2serial_tb
 
 all: simulate
 
 sv_compile:
-	cp $(SRC_PATH)/rom_init.mem .
-	xvlog -sv $(SRC_PATH)/$(TOP_NAME).sv $(SRC_PATH)/$(TESTBENCH_NAME).sv
+	xvlog -sv $(SRC_PATH)/*
 
 elaborate: sv_compile
 	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot
@@ -21,5 +19,5 @@ simulate_dump: elaborate
 simulate: elaborate
 
 clean:
-	find . -type f ! -name 'Makefile*' | xargs rm 
+	find . -type f ! -name 'Makefile*' -execdir rm {} +
 	rm -rf xsim.dir

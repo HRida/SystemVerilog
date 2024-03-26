@@ -12,7 +12,7 @@ module DMA #(
   input logic [ADDR_WIDTH-1:0] data_amt, // data amount to be transferred
   output logic done // notify end of transfer
 );
-  logic [31:0] current_element;
+  logic [31:0] current_element = 0;
 
   always @(posedge clk) begin  // or posedge reset
     if (rst) done <= 1'b0;

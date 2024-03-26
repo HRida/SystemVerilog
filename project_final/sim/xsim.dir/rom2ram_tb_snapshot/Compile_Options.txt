@@ -1,0 +1,1 @@
+-debug "typical" -top "rom2ram_tb" -snapshot "rom2ram_tb_snapshot" 

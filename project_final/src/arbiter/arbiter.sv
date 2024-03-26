@@ -11,10 +11,9 @@ module Arbiter (
 
   typedef enum logic [1:0] {
     IDLE,
-    // BUSY, // TODO: do I need this state?
-    GRANT_ROM_READ,
-    GRANT_MOV_DMA,
-    GRANT_DOT_PROD
+    ROM2RAM,
+    DOT_PRODUCT,
+    FIFO_TRANSFER
   } arbiter_states_t;
 
   arbiter_states_t state, next_state;
@@ -34,23 +33,23 @@ module Arbiter (
         {g0, g1, g2} <= 2'b00;
         next_state = IDLE;
 
-        if (r0) next_state = GRANT_ROM_READ;
-        else if (!r0 & r1) next_state = GRANT_MOV_DMA;
-        else if (!r0 & !r1 & r2) next_state = GRANT_DOT_PROD;
+        if (r0) next_state = ROM2RAM;
+        else if (!r0 & r1) next_state = DOT_PRODUCT;
+        else if (!r0 & !r1 & r2) next_state = FIFO_TRANSFER;
       end
-      GRANT_ROM_READ: begin
+      ROM2RAM: begin
         g0 <= 1;
         if (!r0) begin
           next_state = IDLE;
         end
       end
-      GRANT_MOV_DMA: begin
+      DOT_PRODUCT: begin
         g1 <= 1;
         if (!r1) begin
           next_state = IDLE;
         end
       end
-      GRANT_DOT_PROD: begin
+      FIFO_TRANSFER: begin
         g2 <= 1;
         if (!r2) begin
           next_state = IDLE;

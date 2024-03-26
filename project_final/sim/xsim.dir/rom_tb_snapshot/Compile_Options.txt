@@ -1,1 +1,0 @@
--debug "typical" -top "rom_tb" -snapshot "rom_tb_snapshot" 

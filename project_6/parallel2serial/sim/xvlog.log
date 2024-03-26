@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/src/parallel2serial.sv" into library work
+INFO: [VRFC 10-311] analyzing module parallel2serial
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/src/parallel2serial_mux.sv" into library work
+INFO: [VRFC 10-311] analyzing module parallel2serial_mux
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/src/parallel2serial_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module parallel2serial_tb

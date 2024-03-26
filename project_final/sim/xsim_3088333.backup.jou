@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Tue Mar 26 02:13:03 2024
+# Process ID: 3088333
+# Current directory: /shares/zitipoolhome/ub305/Verilog/project_final/sim
+# Command line: xsim -source {xsim.dir/rom2ram_tb_snapshot.wdb/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/Verilog/project_final/sim/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/Verilog/project_final/sim/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.750 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+start_gui
+source xsim.dir/rom2ram_tb_snapshot.wdb/xsim_script.tcl
+add_wave {{/rom2ram_tb/rom2ram_dut}} 
+current_wave_config {Untitled 1}
+add_wave {{/rom2ram_tb/rom2ram_dut/simple_dualport_mem}} 
+close_sim

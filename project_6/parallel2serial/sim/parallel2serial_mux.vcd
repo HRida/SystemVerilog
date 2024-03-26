@@ -1,0 +1,101 @@
+$date
+   Mon Mar 25 15:18:20 2024
+$end
+$version
+  2021.2
+$end
+$timescale
+  1ps
+$end
+$scope module parallel2serial_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " reset $end
+$var reg 4 # parin [3:0] $end
+$var reg 1 $ load $end
+$var reg 1 % completed $end
+$var reg 1 & serout $end
+$scope module dut $end
+$var wire 1 ' clk $end
+$var wire 1 ( reset $end
+$var wire 4 ) parin [3:0] $end
+$var wire 1 * load $end
+$var reg 1 % completed $end
+$var reg 1 & serout $end
+$var reg 4 + buffered_parin [3:0] $end
+$var reg 2 , counter [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+1"
+b0 #
+0$
+x%
+x&
+0'
+1(
+b0 )
+0*
+bx +
+bx ,
+$end
+#5000
+1!
+0%
+0&
+1'
+b0 ,
+#10000
+0!
+0"
+0'
+0(
+#15000
+1!
+1$
+1'
+1*
+b0 +
+#20000
+0!
+0$
+0'
+0*
+#25000
+1!
+b1001 #
+1'
+b1001 )
+b1 ,
+#30000
+0!
+0'
+#35000
+1!
+1'
+b10 ,
+#40000
+0!
+0'
+#45000
+1!
+1'
+b11 ,
+#50000
+0!
+0'
+#55000
+1!
+1%
+1'
+#60000
+0!
+0'
+#65000
+1!
+1'
+#70000
+0!
+0'

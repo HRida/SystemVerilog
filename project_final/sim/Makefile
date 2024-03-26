@@ -1,16 +1,20 @@
-SRC_PATH=../src
-TOP_NAME=rom
-TESTBENCH_NAME=rom_tb
+SRC_PATH_DMA=../src/dma
+SRC_PATH_ROM=../src/rom
+SRC_PATH_RAM=../src/ram
+DMA_MODULE=dma
+ROM2RAM_MODULE=rom2ram
+ROM_MODULE=rom
+RAM_MODULE=simple_dualport_mem
+TESTBENCH_NAME=rom2ram_tb
 
 all: simulate
 
 sv_compile:
-	cp $(SRC_PATH)/$(TOP_NAME)/rom_file_1.mem .
-	cp $(SRC_PATH)/$(TOP_NAME)/rom_file_2.mem .
-	xvlog -sv $(SRC_PATH)/$(TOP_NAME)/$(TOP_NAME).sv $(SRC_PATH)/$(TOP_NAME)/$(TESTBENCH_NAME).sv
-
+	cp $(SRC_PATH_DMA)/rom_file.mem .
+	xvlog -sv $(SRC_PATH_DMA)/$(DMA_MODULE).sv $(SRC_PATH_DMA)/$(ROM2RAM_MODULE).sv $(SRC_PATH_ROM)/$(ROM_MODULE).sv $(SRC_PATH_RAM)/$(RAM_MODULE).sv $(SRC_PATH_DMA)/$(TESTBENCH_NAME).sv 
+	
 elaborate: sv_compile
-	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot
+	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot 
 
 simulate: elaborate
 	xsim $(TESTBENCH_NAME)_snapshot -R 
@@ -22,5 +26,6 @@ simulate_dump: elaborate
 simulate: elaborate
 
 clean:
+	#find . -type f ! -name 'Makefile*' -execdir rm {} +
 	find . -type f ! -name 'Makefile*' | xargs rm 
-	rm -rf xsim.dir
+	rm -rf xsim*

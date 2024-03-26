@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Mon Mar 25 15:18:11 2024
+# Process ID: 2091189
+# Current directory: /shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/sim
+# Command line: xsim -mode tcl -source {xsim.dir/parallel2serial_tb_snapshot/xsim_script.tcl}
+# Log file: /shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/sim/xsim.log
+# Journal file: /shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/sim/xsim.jou
+# Running On: nct-epic, OS: Linux, CPU Frequency: 1199.739 MHz, CPU Physical cores: 32, Host memory: 676204 MB
+#-----------------------------------------------------------
+source xsim.dir/parallel2serial_tb_snapshot/xsim_script.tcl
+# xsim {parallel2serial_tb_snapshot} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+$finish called at time : 75 ns : File "/shares/zitipoolhome/ub305/Verilog/project_6/parallel2serial/src/parallel2serial_tb.sv" Line 45
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Mar 25 15:18:20 2024...

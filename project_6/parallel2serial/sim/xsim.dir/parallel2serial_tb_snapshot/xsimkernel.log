@@ -1,0 +1,7 @@
+Running: xsim.dir/parallel2serial_tb_snapshot/xsimk -runall -simmode gui -wdb parallel2serial_tb_snapshot.wdb -simrunnum 0 -socket 49807
+Design successfully loaded
+Design Loading Memory Usage: 33108 KB (Peak: 33108 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 115104 KB (Peak: 172376 KB)
+Simulation CPU Usage: 10 ms

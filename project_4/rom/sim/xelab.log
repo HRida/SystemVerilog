@@ -1,0 +1,13 @@
+Vivado Simulator v2021.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /shares/nct-opt/software/xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab -debug typical -top ROM_tb -snapshot ROM_tb_snapshot 
+Multi-threading is on. Using 126 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.ROM(INIT_FILE="rom_init.mem",DEP...
+Compiling module work.ROM_tb
+Built simulation snapshot ROM_tb_snapshot
