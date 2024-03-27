@@ -9,7 +9,7 @@ Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module work.rom(DEPTH=16)
-Compiling module work.dma
+Compiling module work.dma(DEPTH=16)
 Compiling module work.simple_dualport_mem_default
 Compiling module work.rom2ram_default
 Compiling module work.rom2ram_tb

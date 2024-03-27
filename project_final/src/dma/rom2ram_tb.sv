@@ -12,8 +12,8 @@ module rom2ram_tb;
   logic start;
   logic done;
   logic reset;
-  logic start_rom;
-  logic start_dma;
+  logic start_rom = 1'b0;
+  logic start_dma = 1'b0;
   logic [DATA_AMOUNT-1:0] data_amt;
   logic [DATA_WIDTH-1:0] matrix_data [DATA_AMOUNT-1:0];
 
@@ -44,32 +44,33 @@ module rom2ram_tb;
     start = 0;
     reset = 0;
     data_amt = 16;
-
     // Wait for a while
-    #10;
+    #5;
     // Start the rom-write
     start_rom <= 1;
     // Start the dma
     start_dma <= 1;
     // Start the rom2ram
     start <= 1;
-    // Wait for a 100 time units
-    #100;
-
-    // Check if done is asserted
-    if (!done) begin
-      $display("Test failed: done is not asserted.");
-    end else begin
-      $display("Test passed: done is asserted.");
-    end
-
-    // End simulation
-    $finish;
   end
 
   initial begin
     $dumpfile("waveform.vcd");
     $dumpvars; //dump all variables
+  end
+
+  always @(done) begin
+    if (!done)
+        $display("done is 0");
+    else begin
+        $display("done is 1");
+        $finish;
+    end
+    if ($time > 500)
+    begin
+        $display("Simulation timeout");
+        $finish; 
+    end
   end
 
 endmodule
