@@ -20,11 +20,11 @@ module arbiter_tb;
 
    initial begin
       clk   <= 0; // clock initially at zero
-      reset <= 1; // reset initially disabled
+      reset <= 1;
       r0    <= 0;
       r1    <= 0;
       r2    <= 0;
-      #10ns reset <= 0; // disable reset after 20 ns
+      #10ns reset <= 0;
       #20ns r0 <=1;
       #10ns r0 <=0;
       #20ns r1 <=1;

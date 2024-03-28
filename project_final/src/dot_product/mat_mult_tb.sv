@@ -1,15 +1,15 @@
-`timescale 1 ns / 1 ps
+// `timescale 1 ns / 1 ps
 `define NUM_ELEMS 5
 `define DATA_WIDTH 2
 
 module mat_mult_tb();
   parameter N_ROWS = 3;
   parameter N_COLUMNS = 2;
-  parameter DW = 8;
 
   logic clk = 1'b1;
   logic reset = 1'b0;
-  logic enable = 1'b0;
+  logic enable_mult = 1'b0;
+  logic mult_done = 1'b0; 
   int mat1 [0 : N_ROWS-1] [0 : N_COLUMNS-1];
   int mat2 [0 : N_ROWS-1] [0 : N_COLUMNS-1];
   int mat_out [0 : N_ROWS-1] [0 : N_COLUMNS-1];
@@ -30,26 +30,30 @@ module mat_mult_tb();
     foreach(mat2[i,j]) $display("\t mat2[%0d][%0d] = %0d",i,j,mat2[i][j]);
   end
 
-  // Instantiate mat_mult
-  mat_mult #(.N_ROWS(N_ROWS), .N_COLUMNS(N_COLUMNS), .DW(DW)) mat_mult_dut (
+  // Instantiate mat_mult module
+  mat_mult #(
+    .N_ROWS(N_ROWS), 
+    .N_COLUMNS(N_COLUMNS)
+    ) mat_mult_dut (
     .clk(clk),
     .reset(reset),
-    .enable(enable),
+    .enable_mult(enable_mult),
     .mat1(mat1),
     .mat2(mat2),
-    .mat_out(mat_out)
+    .mat_out(mat_out),
+    .mult_done(mult_done)
   );
 
   initial begin
     // Initialize inputs
     clk = 0;
     reset = 1;
-    enable = 0;
+    enable_mult = 0;
     #10;
     // Apply reset
     reset = 0;
     // Enable operation
-    enable = 1;
+    enable_mult = 1;
     
     // other way to test 
     // for (int i = 0; i < N; i = i + 1) begin

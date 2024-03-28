@@ -2,7 +2,7 @@ module rom2ram #(
   parameter DATA_WIDTH = 8,
   parameter DEPTH = 16,
   parameter INIT_FILE = "rom_file.mem",
-  parameter DATA_AMOUNT = 16,
+  parameter DATA_AMOUNT = 16, 
   localparam ADDR_WIDTH = $clog2(DEPTH)
 ) (
   input  logic clk,
@@ -10,18 +10,17 @@ module rom2ram #(
   input  logic start,
   input  logic start_rom,
   input  logic start_dma,
-  input  logic [DATA_AMOUNT-1:0] data_amt,
-  output logic [DATA_WIDTH-1:0] matrix_data [DATA_AMOUNT-1:0],
+  output int   matrix_data [0:ADDR_WIDTH-1] [0:ADDR_WIDTH-1],
   output logic done
 );
   // rom inputs & outputs  
   logic [ADDR_WIDTH-1:0] rom_address; 
-  logic [DATA_WIDTH-1:0] rom_data;
+  int rom_data;
   logic [ADDR_WIDTH-1:0] nxt_rom_address;
 
   // ram inputs & outputs
   logic [ADDR_WIDTH-1:0] ram_address;
-  logic [DATA_WIDTH-1:0] ram_data;
+  int ram_data;
   logic [ADDR_WIDTH-1:0] read_ram_address;
   logic [ADDR_WIDTH-1:0] nxt_read_ram_address;
   logic ram_wea;
@@ -30,6 +29,8 @@ module rom2ram #(
 
   // matrix data to be read from RAM
   logic [DATA_WIDTH-1:0] element_data;
+  int i = 0, j = 0;
+  // logic ready_ram_d1, ready_ram_d2, ready_ram_d3; // for synchronization purpose
   
   // ROM is given addresses and retreive back data of one address (one element) from the defined "INIT_FILE" 
   rom #(
@@ -52,12 +53,10 @@ module rom2ram #(
     .clk         (clk),         // input comes from rom2ram
     .reset       (reset),       // input comes from rom2ram
     .start_dma   (start_dma),   // input comes from rom2ram
-    .data_amt    (data_amt),    // input comes from rom2ram
     .rom_data    (rom_data),    // input from ROM to DMA
     .rom_addr    (rom_address), // input from ROM to DMA
     .ram_addr    (ram_address), // output from DMA to RAM
     .ram_data    (ram_data),    // output from DMA to RAM
-    // .done     (done),        // output goes to Arbiter <<<<<<<<< maybe wrong?
     .ram_wea     (ram_wea)      // output from DMA to RAM
   );
 
@@ -79,7 +78,10 @@ module rom2ram #(
     if (clk) begin
       if (reset) begin
         rom_address <= 0;
-        for (int i=0; i < DATA_AMOUNT-1; i=i+1) matrix_data[i] <= 0; // reset matrix data 
+        read_ram_address <= 0;
+        for (int i=0; i < ADDR_WIDTH-1; i=i+1) 
+          for (int j=0; j < ADDR_WIDTH-1; j=j+1)
+            matrix_data[i][j] <= 0; // reset matrix data 
       end else begin
         if (start) begin
           if (rom_address < DATA_AMOUNT) begin
@@ -87,7 +89,7 @@ module rom2ram #(
           end
           if (ready_ram) begin
             read_ram_address <= nxt_read_ram_address;
-            matrix_data[read_ram_address] <= element_data;
+            matrix_data[i][j] = element_data;
           end
           if (read_ram_address == (DATA_AMOUNT-1)) begin
             done <= 1;
@@ -107,8 +109,44 @@ module rom2ram #(
     if (read_ram_available)
       ready_ram = 1;
   end
-
+  
   always_comb 
-    nxt_read_ram_address = read_ram_address + 1;
+      nxt_read_ram_address = read_ram_address + 1;
+
+  // always_comb begin
+  //   if (ready_ram_d3)
+  //     nxt_read_ram_address = read_ram_address + 1;
+  //   else
+  //     nxt_read_ram_address = read_ram_address;
+  // end
+
+  // [01 02 03 04] 
+  // [05 06 07 08] 
+  // [09 0A 0B 0C] 
+  // [0D 0E 0F 00] 
+  always @(read_ram_address) begin
+    if(ready_ram) begin
+      if(i <= 3) begin
+      j <= j + 1;
+      end
+      if(j >= 3) begin
+        i <= i + 1;
+        j <= 0;
+      end
+    end
+  end
+
+  // delay ready_ram by 2 cycles for synchronization
+  // always_ff @(posedge clk) begin
+  //   if (reset) begin
+  //     ready_ram_d1 = 0;
+  //     ready_ram_d2 = 0;
+  //     ready_ram_d3 = 0;
+  //   end
+  //   else begin
+  //     ready_ram_d1 <= ready_ram;
+  //     ready_ram_d2 <= ready_ram_d1;
+  //   end
+  // end
 
 endmodule : rom2ram

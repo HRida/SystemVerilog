@@ -6,18 +6,18 @@ module simple_dualport_mem #(
 ) (
   input logic clk,
   //PORT A (write port)
-  input logic [ADDR_WIDTH-1:0] addra, //write address
-  input logic [DATA_WIDTH-1:0] dina, //data input
-  input logic wea, //write enable
+  input  logic [ADDR_WIDTH-1:0] addra,  // write address
+  input  int dina,   // data input
+  input  logic wea,                     // write enable
   //PORT B (read port)
-  input logic [ADDR_WIDTH-1:0] addrb, //read address
-  output logic [DATA_WIDTH-1:0] doutb, //data output
-  output logic read_ram_available
+  input  logic [ADDR_WIDTH-1:0] addrb,  // read address
+  output int                    doutb,  // data output
+  output logic read_ram_available       // flag to indicate that the last address has been read
 );
 
   //declare an unpacked array signal for storing data
-  //memory depth : 16 different locations, data width : 8bit
-  logic [DATA_WIDTH-1:0] mem[DATA_AMOUNT-1:0];
+  //memory depth e.g: 16 different locations, data width : 8bit
+  int mem[DATA_AMOUNT-1:0];
 
   always_ff @(posedge clk) begin
     if (wea) mem[addra] <= dina;  //write operation (Port A)

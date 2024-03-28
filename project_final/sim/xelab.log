@@ -1,6 +1,6 @@
 Vivado Simulator v2021.2
 Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
-Running: /shares/nct-opt/software/xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab -debug typical -top rom2ram_tb -snapshot rom2ram_tb_snapshot 
+Running: /shares/nct-opt/software/xilinx/Vivado/2021.2/bin/unwrapped/lnx64.o/xelab -debug typical -top mat_mult_tb -snapshot mat_mult_tb_snapshot 
 Multi-threading is on. Using 126 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -8,9 +8,7 @@ Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module work.rom(DEPTH=16)
-Compiling module work.dma(DEPTH=16)
-Compiling module work.simple_dualport_mem_default
-Compiling module work.rom2ram_default
-Compiling module work.rom2ram_tb
-Built simulation snapshot rom2ram_tb_snapshot
+Compiling module work.dot_product(N=3)
+Compiling module work.mat_mult(N_ROWS=3)
+Compiling module work.mat_mult_tb
+Built simulation snapshot mat_mult_tb_snapshot

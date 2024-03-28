@@ -1,7 +1,0 @@
-Running: xsim.dir/rom2ram_tb_snapshot/xsimk -simmode gui -wdb rom2ram_tb_snapshot.wdb -simrunnum 0 -socket 53095
-Design successfully loaded
-Design Loading Memory Usage: 33144 KB (Peak: 33264 KB)
-Design Loading CPU Usage: 10 ms
-Simulation completed
-Simulation Memory Usage: 115140 KB (Peak: 172412 KB)
-Simulation CPU Usage: 20 ms

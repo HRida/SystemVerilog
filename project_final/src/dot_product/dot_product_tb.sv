@@ -1,4 +1,4 @@
-`timescale 1 ns / 1 ps
+// `timescale 1 ns / 1 ps
 `define NUM_ELEMS 5
 `define DATA_WIDTH 2
 
@@ -10,6 +10,7 @@ module dot_product_tb;
   logic clock = 1'b1;
   logic reset = 1'b0;
   logic enable = 1'b0;
+  logic product_done = 1'b0;
   int sum;
   
   //generate clock signal
@@ -34,15 +35,15 @@ module dot_product_tb;
   end
   
   dot_product #(
-    .N(2),
-    .DW(8)
+    .N(2)
   ) dot_product_dut (
     .clk(clock),
     .reset(reset),
     .enable(enable),
     .inp1(array1[0]),
     .inp2(array2[1]),
-    .sum(sum)
+    .sum(sum),
+    .product_done(product_done)
   );
   
   initial begin

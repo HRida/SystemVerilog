@@ -1,10 +1,8 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dma/dma.sv" into library work
-INFO: [VRFC 10-311] analyzing module dma
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dma/rom2ram.sv" into library work
-INFO: [VRFC 10-311] analyzing module rom2ram
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/rom/rom.sv" into library work
-INFO: [VRFC 10-311] analyzing module rom
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/ram/simple_dualport_mem.sv" into library work
-INFO: [VRFC 10-311] analyzing module simple_dualport_mem
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dma/rom2ram_tb.sv" into library work
-INFO: [VRFC 10-311] analyzing module rom2ram_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dot_product/dot_product.sv" into library work
+INFO: [VRFC 10-311] analyzing module dot_product
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dot_product/dot_product_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module dot_product_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dot_product/mat_mult.sv" into library work
+INFO: [VRFC 10-311] analyzing module mat_mult
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/shares/zitipoolhome/ub305/Verilog/project_final/src/dot_product/mat_mult_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module mat_mult_tb

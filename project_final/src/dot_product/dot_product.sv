@@ -1,34 +1,39 @@
  module dot_product #(
-  parameter N = 2,
-  parameter DW = 8
+  parameter N = 2
 ) (
   input logic clk,
   input logic reset,
-  input logic enable,
+  input logic enable_product,
   input int inp1[0:1],
   input int inp2[0:1],
-  output int sum
+  output int sum, 
+  output logic product_done
 );  
     
     int temp_sum = 0;
     
     always_ff @(posedge clk)
     begin
-        if(reset == 1)
-            temp_sum = 0;
-        else if (enable == 1)
+        if(reset) begin
+            temp_sum <= 0;
+            product_done <= 0;
+        end
+        else if (enable_product)
         begin
             temp_sum = 0;
             for (int i = 0; i < N; i = i + 1) begin : sum_loop // $size(inp1)
                 temp_sum = temp_sum  + inp1[i] * inp2[i];
             end 
-        end else begin
-            temp_sum = 0;
+            product_done <= 1;
+        end 
+        else begin
+            temp_sum <= 0;
+            product_done <= 0;
         end 
            
         sum <= temp_sum;
     end
 
-// assign sum = temp_sum;
+    // assign sum = temp_sum;
     
 endmodule : dot_product

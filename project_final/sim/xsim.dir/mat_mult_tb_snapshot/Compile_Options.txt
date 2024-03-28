@@ -1,0 +1,1 @@
+-debug "typical" -top "mat_mult_tb" -snapshot "mat_mult_tb_snapshot" 

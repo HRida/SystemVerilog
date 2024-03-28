@@ -15,9 +15,9 @@ module rom2ram_tb;
   logic start_rom = 1'b0;
   logic start_dma = 1'b0;
   logic [DATA_AMOUNT-1:0] data_amt;
-  logic [DATA_WIDTH-1:0] matrix_data [DATA_AMOUNT-1:0];
+  int matrix_data [0:ADDR_WIDTH-1] [0:ADDR_WIDTH-1];
 
-  // Instantiate the unit under test (UUT)
+  // Instantiate ROM2RAM module
   rom2ram #(
     .DATA_WIDTH(DATA_WIDTH),
     .DEPTH(DEPTH),
@@ -29,7 +29,6 @@ module rom2ram_tb;
     .start(start),
     .start_rom(start_rom),
     .start_dma(start_dma),
-    .data_amt(data_amt),
     .matrix_data(matrix_data),
     .done(done)
   );
@@ -60,6 +59,7 @@ module rom2ram_tb;
   end
 
   always @(done) begin
+    #1;
     if (!done)
         $display("done is 0");
     else begin
