@@ -1,0 +1,45 @@
+SRC_PATH_ARBITER=../src/arbiter
+SRC_PATH_CDC=../src/cdc
+SRC_PATH_DMA=../src/dma
+SRC_PATH_FIFO=../src/fifo
+SRC_PATH_MATMULT=../src/matmult
+SRC_PATH_RAM=../src/ram
+SRC_PATH_ROM=../src/rom
+SRC_PATH_top=../src/top
+
+ARBITER_MODULE=arbiter
+CDC_MODULE=synchronizer
+DMA_MODULE=dma
+ROM2RAM_MODULE=rom2ram
+FIFO_MODULE=simple_sync_fifo
+FIFOTRANS_MODULE=fifo_transfer
+MATMULT_MODULE=mat_mult
+DOTPRODUCT_MODULE=dot_product
+RAM_MODULE=simple_dualport_mem
+ROM_MODULE=rom
+TOP_MODULE=top_module
+
+TESTBENCH_NAME=top_module_tb
+
+all: simulate
+
+sv_compile:
+	cp $(SRC_PATH_DMA)/rom_file.mem .
+	xvlog -sv $(SRC_PATH_top)/$(TOP_MODULE).sv $(SRC_PATH_MATMULT)/$(DOTPRODUCT_MODULE).sv $(SRC_PATH_MATMULT)/$(MATMULT_MODULE).sv $(SRC_PATH_FIFO)/$(FIFOTRANS_MODULE).sv $(SRC_PATH_FIFO)/$(FIFO_MODULE).sv $(SRC_PATH_CDC)/$(CDC_MODULE).sv $(SRC_PATH_ARBITER)/$(ARBITER_MODULE).sv $(SRC_PATH_DMA)/$(DMA_MODULE).sv $(SRC_PATH_DMA)/$(ROM2RAM_MODULE).sv $(SRC_PATH_ROM)/$(ROM_MODULE).sv $(SRC_PATH_RAM)/$(RAM_MODULE).sv $(SRC_PATH_top)/$(TESTBENCH_NAME).sv 
+	
+elaborate: sv_compile
+	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot 
+
+simulate: elaborate
+	xsim $(TESTBENCH_NAME)_snapshot -R 
+
+simulate_dump: elaborate
+	xsim $(TESTBENCH_NAME)_snapshot -tclbatch Makefile_cfg_xsim.tcl
+	xsim --gui $(TESTBENCH_NAME)_snapshot.wdb
+
+simulate: elaborate
+
+clean:
+	#find . -type f ! -name 'Makefile*' -execdir rm {} +
+	find . -type f ! -name 'Makefile*' | xargs rm 
+	rm -rf xsim*

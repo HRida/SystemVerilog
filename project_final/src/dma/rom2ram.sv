@@ -28,9 +28,9 @@ module rom2ram #(
   logic ready_ram;
 
   // matrix data to be read from RAM
-  logic [DATA_WIDTH-1:0] element_data;
+  int element_data; // logic [DATA_WIDTH-1:0] element_data;
   int i = 0, j = 0;
-  // logic ready_ram_d1, ready_ram_d2, ready_ram_d3; // for synchronization purpose
+  // logic ready_ram_d1, ready_ram_d2; // for synchronization purpose
   
   // ROM is given addresses and retreive back data of one address (one element) from the defined "INIT_FILE" 
   rom #(
@@ -114,7 +114,7 @@ module rom2ram #(
       nxt_read_ram_address = read_ram_address + 1;
 
   // always_comb begin
-  //   if (ready_ram_d3)
+  //   if (ready_ram_d2)
   //     nxt_read_ram_address = read_ram_address + 1;
   //   else
   //     nxt_read_ram_address = read_ram_address;
@@ -124,7 +124,7 @@ module rom2ram #(
   // [05 06 07 08] 
   // [09 0A 0B 0C] 
   // [0D 0E 0F 00] 
-  always @(read_ram_address) begin
+  always @(read_ram_address) begin 
     if(ready_ram) begin
       if(i <= 3) begin
       j <= j + 1;
@@ -141,7 +141,6 @@ module rom2ram #(
   //   if (reset) begin
   //     ready_ram_d1 = 0;
   //     ready_ram_d2 = 0;
-  //     ready_ram_d3 = 0;
   //   end
   //   else begin
   //     ready_ram_d1 <= ready_ram;

@@ -1,22 +1,36 @@
-SRC_PATH=../src/dot_product
-TESTBENCH_NAME=mat_mult_tb
 
-all: simulate
+top: top
+	make -f ./Makefile.top simulate_dump
 
-sv_compile:
-	xvlog -sv $(SRC_PATH)/*
-	
-elaborate: sv_compile
-	xelab -debug typical -top $(TESTBENCH_NAME) -snapshot $(TESTBENCH_NAME)_snapshot 
+rom2ram: rom2ram
+	make -f ./Makefile.rom2ram simulate_dump
 
-simulate: elaborate
-	xsim $(TESTBENCH_NAME)_snapshot -R 
+arbiter: arbiter
+	make -f ./Makefile.arbiter simulate_dump
 
-simulate_dump: elaborate
-	xsim $(TESTBENCH_NAME)_snapshot -tclbatch Makefile_cfg_xsim.tcl
-	xsim --gui $(TESTBENCH_NAME)_snapshot.wdb
+rom: rom 
+	make -f ./Makefile.rom simulate_dump
 
-simulate: elaborate
+dma: dma
+	make -f ./Makefile.dma simulate_dump
+
+ram: ram
+	make -f ./Makefile.ram simulate_dump
+
+matmult: matmult
+	make -f ./Makefile.matmult simulate_dump
+
+dotporduct: dotporduct
+	make -f ./Makefile.dotproduct simulate_dump
+
+fifo: 
+	make -f ./Makefile.fifo simulate_dump
+
+mac: mac
+	make -f ./Makefile.mac simulate_dump
+
+cdc: cdc
+	make -f ./Makefile.cdc simulate_dump
 
 clean:
 	#find . -type f ! -name 'Makefile*' -execdir rm {} +

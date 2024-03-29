@@ -6,13 +6,13 @@ module simple_dualport_mem #(
 ) (
   input logic clk,
   //PORT A (write port)
-  input  logic [ADDR_WIDTH-1:0] addra,  // write address
-  input  int dina,   // data input
-  input  logic wea,                     // write enable
+  input  logic [ADDR_WIDTH-1:0] addra, // write address
+  input  int dina,                     // data input
+  input  logic wea,                    // write enable
   //PORT B (read port)
-  input  logic [ADDR_WIDTH-1:0] addrb,  // read address
-  output int                    doutb,  // data output
-  output logic read_ram_available       // flag to indicate that the last address has been read
+  input  logic [ADDR_WIDTH-1:0] addrb, // read address
+  output int doutb,                    // data output
+  output logic read_ram_available      // flag to indicate that the last address has been read
 );
 
   //declare an unpacked array signal for storing data

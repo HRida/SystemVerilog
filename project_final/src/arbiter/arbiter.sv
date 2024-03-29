@@ -1,4 +1,4 @@
-module Arbiter (
+module arbiter (
   input logic clk,
   input logic reset,
   input logic r0,
@@ -34,8 +34,8 @@ module Arbiter (
         next_state = IDLE;
 
         if (r0) next_state = ROM2RAM;
-        else if (!r0 & r1) next_state = DOT_PRODUCT;
-        else if (!r0 & !r1 & r2) next_state = FIFO_TRANSFER;
+        if (!r0 & r1) next_state = DOT_PRODUCT;
+        if (!r0 & !r1 & r2) next_state = FIFO_TRANSFER;
       end
       ROM2RAM: begin
         g0 <= 1;

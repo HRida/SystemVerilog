@@ -1,7 +1,0 @@
-Running: xsim.dir/mat_mult_tb_snapshot/xsimk -simmode gui -wdb mat_mult_tb_snapshot.wdb -simrunnum 0 -socket 39059
-Design successfully loaded
-Design Loading Memory Usage: 33132 KB (Peak: 33252 KB)
-Design Loading CPU Usage: 10 ms
-Simulation completed
-Simulation Memory Usage: 115128 KB (Peak: 172400 KB)
-Simulation CPU Usage: 10 ms

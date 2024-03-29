@@ -1,10 +1,12 @@
 module top_module #(
   parameter INIT_FILE = "rom_file.mem",
-  parameter DATA_WIDTH = 8,
-  parameter DEPTH = 8,
+  parameter DATA_WIDTH = 32,
+  parameter DEPTH = 16,
+  parameter DATA_AMOUNT = 16,
   localparam ADDR_WIDTH = $clog2(DEPTH)
 ) (
-  input  logic clk,
+  input  logic clk1,
+  input  logic clk2,
   input  logic reset,
   input  logic top_start,
   output logic top_done
@@ -14,10 +16,13 @@ module top_module #(
     logic enable_mult, enable_fifo;
     int matrix_data [0:ADDR_WIDTH-1] [0:ADDR_WIDTH-1];
     int mat_out [0:ADDR_WIDTH-1] [0:ADDR_WIDTH-1];
+    logic r0, r1, r2;
+    logic g0_sync, g1_sync, g2_sync;
+    logic g0, g1, g2;
 
     // Instantiate the amazing arbiter
-    arbiter arbiter_dut(
-     .clk  (clk),
+    arbiter arbiter (
+     .clk  (clk1),
      .reset(reset),
      .r0   (r0),
      .r1   (r1),
@@ -27,14 +32,33 @@ module top_module #(
      .g2   (g2)
     );
 
+    // Instantiate Synchronizers
+    synchronizer synchronizer_0 (
+     .clk2(clk2),
+     .g(g0),
+     .g_sync(g0_sync)
+    );
+    
+    synchronizer synchronizer_1 (
+     .clk2(clk2),
+     .g(g1),
+     .g_sync(g1_sync)
+    );
+    
+    synchronizer synchronizer_2 (
+     .clk2(clk2),
+     .g(g2),
+     .g_sync(g2_sync)
+    );
+    
     // Instantiate ROM2RAM module
     rom2ram #(
      .DATA_WIDTH(DATA_WIDTH),
      .DEPTH(DEPTH),
      .INIT_FILE(INIT_FILE),
      .DATA_AMOUNT(DATA_AMOUNT)
-    ) rom2ram_dut (
-     .clk(clk),
+    ) rom2ram (
+     .clk(clk2),
      .reset(reset),
      .start(start_rom2ram),
      .start_rom(start_rom),
@@ -45,10 +69,10 @@ module top_module #(
 
     // Instantiate mat_mult module
     mat_mult #(
-     .N_ROWS(DATA_WIDTH), 
-     .N_COLUMNS(DATA_WIDTH) 
-    ) mat_mult_dut (
-     .clk(clk),
+     .N_ROWS(ADDR_WIDTH), 
+     .N_COLUMNS(ADDR_WIDTH) 
+    ) mat_mult (
+     .clk(clk2),
      .reset(reset),
      .enable_mult(enable_mult),
      .mat1(matrix_data),
@@ -59,19 +83,18 @@ module top_module #(
 
     // Instantiate fifo_transfer module
     fifo_transfer #(
-     .N_ROWS(DATA_WIDTH), 
-     .N_COLUMNS(DATA_WIDTH) 
-    ) mat_mult_dut (
-     .clk(clk),
+     .DATA_WIDTH(DATA_WIDTH), 
+     .DEPTH(DEPTH) ,
+     .DATA_AMOUNT(DATA_AMOUNT)
+    ) fifo_transfer (
+     .clk(clk2),
      .reset(reset),
-     .enable(enable_fifo),
-     .mat_out_in(mat_out),
+     .enable_fifo(enable_fifo),
+     .matrix_out_in(mat_out),
      .fifo_done(fifo_done)
     );
 
-    // TODO: Write back the matrix data to the file
-
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk1) begin
         if (reset) begin
           r0 <= 0;
           r1 <= 0;
@@ -103,20 +126,20 @@ module top_module #(
     end
 
     always_comb begin
-        if (g0) begin
+        if (g0_sync) begin
             $display("Arbiter granted ROM2RAM access");
             start_rom <= 1;
             start_dma <= 1;
             start_rom2ram <= 1;
         end
-        if (g1) begin
+        if (g1_sync) begin
             $display("Arbiter granted DOT_PRODUCT access");
             enable_mult <= 1;
         end
-        if (g2) begin
+        if (g2_sync) begin
             $display("Arbiter granted FIFO_TRANSFER access");
             enable_fifo <= 1;
         end
     end
 
-endmodule : rom
+endmodule
