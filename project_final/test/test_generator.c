@@ -41,7 +41,7 @@ void writeMatrix(int **matrix, int size)
     {
         for (j = 0; j < size; j++)
         {
-            fprintf(expectedOutput, "%02X\n", matrix[i][j]);
+            fprintf(expectedOutput, "%02x\n", matrix[i][j]);
         }
     }
 
