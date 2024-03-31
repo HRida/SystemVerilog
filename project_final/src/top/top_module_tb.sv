@@ -34,7 +34,7 @@ module top_module_tb;
 
     //Generate the stimulus
     initial begin
-      fd = $fopen ("../test/output", "w"); 
+      fd = $fopen ("output", "w"); 
       $fmonitor (fd, "%02X" , write_to_file);
       clk1  <= 0;
       clk2  <= 0; 

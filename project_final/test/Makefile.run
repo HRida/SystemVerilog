@@ -1,0 +1,7 @@
+build:
+	gcc -o ../test/mem_creator.o ../test/mem_creator.c 
+	gcc -o ../test/test_generator.o ../test/test_generator.c 
+	gcc -o ../test/buffer_comperator.o ../test/buffer_comperator.c 
+
+clean :
+	rm ../test/mem_creator.o ../test/test_generator.o ../test/buffer_comperator.o

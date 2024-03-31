@@ -53,10 +53,10 @@ int main() {
     readFile("output_expected", &buffer2);
 
     if (compareBuffers(buffer1, buffer2, strlen(buffer1), strlen(buffer2))) {
-        printf("Passed\n");
+        printf("<<<<<<<<<<<<<<<<<<<< Passed >>>>>>>>>>>>>>>>>>>>\n");
     } 
     else {
-        printf("Failed\n");
+        printf("<<<<<<<<<<<<<<<<<<<< Failed >>>>>>>>>>>>>>>>>>>>\n");
     }
 
     free(buffer1);
