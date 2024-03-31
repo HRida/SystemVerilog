@@ -16,15 +16,15 @@ module dot_product_tb;
   //generate clock signal
   always #5ns clock = ~clock;
   
-  int array1[0:1][0:1];
-  int array2[0:1][0:1];
+  int array1[0:3][0:3];
+  int array2[0:3][0:3];
   // int vec1 [0:1];
   // int vec2 [0:1];
   
   initial begin
     //array initialization
-    array1 = '{'{1, 2}, '{3, 4}};
-    array2 = '{'{1, 2}, '{3, 4}};
+    array1 = '{'{0, 1, 2, 3}, '{4, 5, 6, 7}, '{8, 9, 10, 11}, '{12, 13, 14, 15}};
+    array2 = '{'{0, 1, 2, 3}, '{4, 5, 6, 7}, '{8, 9, 10, 11}, '{12, 13, 14, 15}};
     // vec1 = '{1, 2};
     // vec2 = '{1, 2};
     
@@ -35,11 +35,11 @@ module dot_product_tb;
   end
   
   dot_product #(
-    .N(2)
+    .N(4)
   ) dot_product_dut (
     .clk(clock),
     .reset(reset),
-    .enable(enable),
+    .enable_product(enable),
     .inp1(array1[0]),
     .inp2(array2[1]),
     .sum(sum),

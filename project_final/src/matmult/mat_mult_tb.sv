@@ -3,8 +3,8 @@
 `define DATA_WIDTH 2
 
 module mat_mult_tb();
-  parameter N_ROWS = 3;
-  parameter N_COLUMNS = 2;
+  parameter N_ROWS = 4;
+  parameter N_COLUMNS = 4;
 
   logic clk = 1'b1;
   logic reset = 1'b0;
@@ -19,8 +19,8 @@ module mat_mult_tb();
 
   initial begin
     //array initialization
-    mat1 = '{'{1, 2}, '{3, 4}, '{5, 6}};
-    mat2 = '{'{1, 2}, '{3, 4}, '{0, 0}};
+    mat1 = '{'{0, 1, 2, 3}, '{4, 5, 6, 7}, '{8, 9, 10, 11}, '{12, 13, 14, 15}};
+    mat2 = '{'{0, 1, 2, 3}, '{4, 5, 6, 7}, '{8, 9, 10, 11}, '{12, 13, 14, 15}};
     // vec1 = '{1, 2};
     // vec2 = '{1, 2};
     

@@ -27,7 +27,8 @@ module mat_mult #(
           .reset(reset),
           .enable_product(enable_mult),
           .inp1(mat1[i]),
-          .inp2(mat2[j]),
+          .inp2(mat2), // Pass the whole 2D array => usually the kth element should be passed here in a third loop but since we are using the generate loop we cannnot assign the kth element in it
+          .column_index(j), // Pass the column index => which will help the dot_product module to select the kth element from the 2D array 
           .sum(mat_out[i][j]),
           .product_done(mult_done_array[i][j]) // since using one bit will result to multiple concurrent drivers error because of the generate loop
         );

@@ -1,12 +1,13 @@
  module dot_product #(
   parameter N = 2
 ) (
-  input logic clk,
-  input logic reset,
-  input logic enable_product,
-  input int inp1[0:1],
-  input int inp2[0:1],
-  output int sum, 
+  input  logic clk,
+  input  logic reset,
+  input  logic enable_product,
+  input  int   inp1 [0:N-1],
+  input  int   inp2 [0:N-1] [0 : N-1],
+  input  int   column_index,
+  output int   sum, 
   output logic product_done
 );  
     
@@ -22,7 +23,7 @@
         begin
             temp_sum = 0;
             for (int i = 0; i < N; i = i + 1) begin : sum_loop // $size(inp1)
-                temp_sum = temp_sum  + inp1[i] * inp2[i];
+                temp_sum = temp_sum  + inp1[i] *  inp2[i][column_index];
             end 
             product_done <= 1;
         end 

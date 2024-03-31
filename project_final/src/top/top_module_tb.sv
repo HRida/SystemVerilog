@@ -28,9 +28,9 @@ module top_module_tb;
       .write_to_file(write_to_file)
     );
     
-    //Generate the clock
-    always #5ns clk1 = !clk1; // 200MHz
-    always #10ns clk2 = !clk2; // 100MHz
+    //Generating the clocks
+    always #5ns clk1 = !clk1; // f=1/T, T=5ns => f= 1/5ns => (((1/5)/10^-9)/10^6) = 200MHz
+    always #10ns clk2 = !clk2; // f=1/T, T=10ns => f= 1/10ns => (((1/10)/10^-9)/10^6) = 100MHz
 
     //Generate the stimulus
     initial begin
