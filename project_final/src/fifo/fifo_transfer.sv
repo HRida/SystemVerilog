@@ -6,9 +6,10 @@ module fifo_transfer #(
 ) (
   input  logic clk,
   input  logic reset,
-  input  enable_fifo,
+  input  logic enable_fifo,
   input  int matrix_out_in [0:ADDR_WIDTH-1] [0:ADDR_WIDTH-1],  // The output of the dot product matrix is the input of the FIFO
-  output logic fifo_done
+  output logic fifo_done,
+  output int write_to_file
 );
 
   // fifo inputs
@@ -22,17 +23,20 @@ module fifo_transfer #(
   logic fifo_empty;
 
   // write back to file
-  int write_to_file;
+  // int write_to_file;
 
-  // flags
+  // iteration flags
   int i = 0, j = 0;
+
+  // counter for popped elements
+  int pop_counter = 0, pop_counter_nxt;
 
   // Instantiate the sync_fifo module
   simple_sync_fifo #(
     .DATA_WIDTH (DATA_WIDTH),  
     .FIFO_DEPTH (DEPTH),
     .DATA_AMOUNT(DATA_AMOUNT)
-  ) dut (
+  ) simple_sync_fifo (
     .clk        (clk),
     .reset      (reset),
     .push       (push_enable),
@@ -43,15 +47,10 @@ module fifo_transfer #(
     .fifo_empty (fifo_empty)
   );
 
-  // TODO: Write back the matrix data one by one to a file
-  
-  // alaways_ff for pushing data into the FIFO 
-  // till full then poping data out of the FIFO  
-  // till empty from the simple dualport memory
   always_ff @(posedge clk) begin
     if (reset) begin
       push_enable <= 0;
-      pop_enable <= 0;
+      fifo_done <= 0;
     end
     else begin
       if (enable_fifo) begin
@@ -59,29 +58,24 @@ module fifo_transfer #(
           push_enable <= 1;
           fifo_data_in = matrix_out_in[i][j];
         end
-        else begin
-          if (~fifo_empty) begin
-            pop_enable <= 1;
-            write_to_file = fifo_data_out;
-          end
-          else begin
-            fifo_done <= 1;
-          end
+        if (~fifo_empty) begin
+          write_to_file = fifo_data_out;
+          pop_counter = pop_counter_nxt;
         end
+        if (pop_counter == (ADDR_WIDTH * ADDR_WIDTH)+1)
+          fifo_done <= 1;
       end 
       else begin
         push_enable <= 0;
-        pop_enable <= 0;
       end
     end
   end
 
-  // always_comb begin
-  //   if (read_ram_available)
-  //     ready_ram = 1;
-  // end
+  always_comb pop_enable = !fifo_empty;
 
-  always @(enable_fifo) begin
+  always_comb pop_counter_nxt = pop_counter + 1;
+
+  always @(posedge clk) begin
     if(enable_fifo) begin
       if(i <= 3) begin
       j <= j + 1;
@@ -92,4 +86,5 @@ module fifo_transfer #(
       end
     end
   end
+
 endmodule

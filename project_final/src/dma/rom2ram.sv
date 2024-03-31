@@ -30,14 +30,14 @@ module rom2ram #(
   // matrix data to be read from RAM
   int element_data; // logic [DATA_WIDTH-1:0] element_data;
   int i = 0, j = 0;
-  // logic ready_ram_d1, ready_ram_d2; // for synchronization purpose
+  logic ready_ram_d1; // for synchronization purpose
   
   // ROM is given addresses and retreive back data of one address (one element) from the defined "INIT_FILE" 
   rom #(
     .DATA_WIDTH (DATA_WIDTH),
     .DEPTH      (DEPTH),
     .INIT_FILE  (INIT_FILE)
-  ) rom_dut (
+  ) rom (
     .clk        (clk),         // input comes from TopModule
     .start_rom  (start_rom),   // input from TopModule
     .rom_addr   (rom_address), // input comes from DMA
@@ -49,7 +49,7 @@ module rom2ram #(
     .DATA_WIDTH  (DATA_WIDTH),
     .DEPTH       (DEPTH),
     .DATA_AMOUNT (DATA_AMOUNT)
-  ) dma_dut (
+  ) dma (
     .clk         (clk),         // input comes from rom2ram
     .reset       (reset),       // input comes from rom2ram
     .start_dma   (start_dma),   // input comes from rom2ram
@@ -87,8 +87,10 @@ module rom2ram #(
           if (rom_address < DATA_AMOUNT) begin
             rom_address <= nxt_rom_address;
           end
-          if (ready_ram) begin
+          if (ready_ram) begin 
             read_ram_address <= nxt_read_ram_address;
+          end
+          if (ready_ram_d1) begin // for synchronization purpose
             matrix_data[i][j] = element_data;
           end
           if (read_ram_address == (DATA_AMOUNT-1)) begin
@@ -110,22 +112,15 @@ module rom2ram #(
       ready_ram = 1;
   end
   
-  always_comb 
-      nxt_read_ram_address = read_ram_address + 1;
-
-  // always_comb begin
-  //   if (ready_ram_d2)
-  //     nxt_read_ram_address = read_ram_address + 1;
-  //   else
-  //     nxt_read_ram_address = read_ram_address;
-  // end
+  always_comb
+    nxt_read_ram_address <= read_ram_address + 1;
 
   // [01 02 03 04] 
   // [05 06 07 08] 
   // [09 0A 0B 0C] 
   // [0D 0E 0F 00] 
-  always @(read_ram_address) begin 
-    if(ready_ram) begin
+  always @(posedge clk) begin  // read_ram_address
+    if(ready_ram_d1) begin
       if(i <= 3) begin
       j <= j + 1;
       end
@@ -136,16 +131,14 @@ module rom2ram #(
     end
   end
 
-  // delay ready_ram by 2 cycles for synchronization
-  // always_ff @(posedge clk) begin
-  //   if (reset) begin
-  //     ready_ram_d1 = 0;
-  //     ready_ram_d2 = 0;
-  //   end
-  //   else begin
-  //     ready_ram_d1 <= ready_ram;
-  //     ready_ram_d2 <= ready_ram_d1;
-  //   end
-  // end
+  // delay ready_ram by 1 cycle for synchronization
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      ready_ram_d1 = 0;
+    end
+    else begin
+      ready_ram_d1 <= ready_ram;
+    end
+  end
 
 endmodule : rom2ram

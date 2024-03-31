@@ -22,7 +22,7 @@ module mat_mult #(
         dot_product #(
           .N(N_ROWS)
           ) 
-          dot_product_dut (
+          dot_product (
           .clk(clk),
           .reset(reset),
           .enable_product(enable_mult),

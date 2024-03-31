@@ -16,16 +16,18 @@ module simple_dualport_mem #(
 );
 
   //declare an unpacked array signal for storing data
-  //memory depth e.g: 16 different locations, data width : 8bit
+  //memory depth e.g: 16 different locations, data width : 32bit
   int mem[DATA_AMOUNT-1:0];
 
   always_ff @(posedge clk) begin
-    if (wea) mem[addra] <= dina;  //write operation (Port A)
+    if (wea) mem[addra] = dina;  //write operation (Port A)
   end
 
-  always_ff @(posedge clk) begin
-    doutb <= mem[addrb];  //read operation (Port B)
-  end
+  // always_ff @(posedge clk) begin
+  //   doutb = mem[addrb];  //read operation (Port B)
+  // end
+
+  assign doutb = mem[addrb];  //read operation (Port B)
 
   always_comb begin
     read_ram_available = addra == (DATA_AMOUNT-1) ;

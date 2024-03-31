@@ -10,7 +10,8 @@ module top_module_tb;
     logic reset;
     logic r0, r1, r2;
     logic g0, g1, g2;
-    logic top_start, top_done;
+    logic top_start = 0, top_done = 0;
+    int write_to_file, fd;
     
   // Instantiate the amazing arbiter
   top_module #(
@@ -23,7 +24,8 @@ module top_module_tb;
       .clk2(clk2),
       .reset(reset),
       .top_start(top_start),
-      .top_done(top_done)
+      .top_done(top_done),
+      .write_to_file(write_to_file)
     );
     
     //Generate the clock
@@ -32,6 +34,8 @@ module top_module_tb;
 
     //Generate the stimulus
     initial begin
+      fd = $fopen ("../test/output", "w"); 
+      $fmonitor (fd, "%02X" , write_to_file);
       clk1  <= 0;
       clk2  <= 0; 
       reset <= 1; 
@@ -53,7 +57,8 @@ module top_module_tb;
       r0 <=0;
       r1 <=0;
       r2 <=1;
-      #500ns; 
+      #1000ns; 
+      $fclose(fd);
       $finish;
    end
 

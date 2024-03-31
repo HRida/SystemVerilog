@@ -9,7 +9,8 @@ module top_module #(
   input  logic clk2,
   input  logic reset,
   input  logic top_start,
-  output logic top_done
+  output logic top_done,
+  output int write_to_file
 );
     logic rom2ram_done, mult_done, fifo_done;
     logic start_rom, start_dma, start_rom2ram;
@@ -91,7 +92,8 @@ module top_module #(
      .reset(reset),
      .enable_fifo(enable_fifo),
      .matrix_out_in(mat_out),
-     .fifo_done(fifo_done)
+     .fifo_done(fifo_done),
+     .write_to_file(write_to_file)
     );
 
     always_ff @(posedge clk1) begin

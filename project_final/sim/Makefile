@@ -2,6 +2,9 @@
 top: top
 	make -f ./Makefile.top simulate_dump
 
+top_quick: top_quick
+	make -f ./Makefile.top simulate
+
 rom2ram: rom2ram
 	make -f ./Makefile.rom2ram simulate_dump
 

@@ -22,15 +22,15 @@ module simple_sync_fifo #(
   logic [ADDR_WIDTH-1:0] wr_ptr_nxt; //next state write pointer 
   logic [ADDR_WIDTH-1:0] rd_ptr_nxt; //next state read pointer
   logic read_ram_available;          //flag to indicate that the last address has been read
-  int   read_ram_data;               //data read from the ram
   int   write_ram_data;              //data written to the ram
+  int   read_ram_data;               //data read from the ram
 
   //define a simple "RAM" module to act as internal storage for the memory
   simple_dualport_mem #(
     .DATA_WIDTH(DATA_WIDTH),
     .DEPTH(FIFO_DEPTH),
     .DATA_AMOUNT(DATA_AMOUNT)
-  ) simple_dualport_mem_dut (
+  ) simple_dualport_mem (
     .clk(clk),
     .addra(wr_ptr),
     .dina(write_ram_data),
@@ -47,12 +47,13 @@ module simple_sync_fifo #(
   always_ff @(posedge clk) begin
     if (reset) begin
       wr_ptr <= 0;
+      write_ram_data <= 0;
     end 
     else begin
       //here a write is requested while fifo is not full
       if (~fifo_full & push) begin
-        wr_data <= write_ram_data;
-        wr_ptr <= wr_ptr_nxt;  //increment wr pointer
+        write_ram_data = wr_data;
+        wr_ptr = wr_ptr_nxt;  //increment wr pointer
       end
     end
   end
@@ -64,15 +65,20 @@ module simple_sync_fifo #(
   always_ff @(posedge clk) begin
     if (reset) begin
       rd_ptr <= 0;
-      rd_data <= {DATA_WIDTH{1'b0}};
     end 
     else begin
       //here a read is requested while fifo is not empty
       if (~fifo_empty & pop) begin
-        rd_data <= read_ram_data;
-        rd_ptr <= rd_ptr_nxt;  //increment wr pointer
+        rd_ptr = rd_ptr_nxt;  //increment rd pointer
       end
     end
+  end
+
+  always_comb begin
+    if (~fifo_empty & pop)
+      rd_data = read_ram_data;
+    else
+      rd_data = 0;
   end
 
   //control flags logic

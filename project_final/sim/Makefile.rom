@@ -1,11 +1,12 @@
 SRC_PATH=../src/rom
+ROM_PATH=../test
 TOP_NAME=rom
 TESTBENCH_NAME=rom_tb
 
 all: simulate
 
 sv_compile:
-	cp $(SRC_PATH)/rom_file.mem .
+	cp $(ROM_PATH)/rom_file.mem .
 	xvlog -sv $(SRC_PATH)/$(TOP_NAME).sv $(SRC_PATH)/$(TESTBENCH_NAME).sv
 
 elaborate: sv_compile
